@@ -1,0 +1,75 @@
+# ==============================================================================
+#  REGENERATE C++ FROM PROTO SPECS
+# ==============================================================================
+#
+#  Triggered by render-protocol-spec via repository_dispatch.
+#  Updates the submodule, regenerates C++ code with buf, and commits.
+# ==============================================================================
+
+name: Regenerate C++
+
+on:
+  repository_dispatch:
+    types: [proto-updated]
+
+  # Allow manual trigger for debugging
+  workflow_dispatch:
+
+jobs:
+  regenerate:
+    name: Update protos and regenerate C++
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          submodules: true
+          token: ${{ secrets.RP_DISPATCH_TOKEN }}
+
+      - name: Install Buf CLI
+        uses: bufbuild/buf-action@v1
+        with:
+          setup_only: true
+
+      - name: Update submodule to latest
+        run: make init-protos
+
+      - name: Generate C++ code
+        run: make
+
+      - name: Get spec commit info
+        id: spec
+        run: |
+          if [ "${{ github.event_name }}" = "repository_dispatch" ]; then
+            echo "sha=${{ github.event.client_payload.spec_sha }}" >> "$GITHUB_OUTPUT"
+            echo "short_sha=$(echo '${{ github.event.client_payload.spec_sha }}' | cut -c1-7)" >> "$GITHUB_OUTPUT"
+            # Sanitize commit message for use in commit body (escape newlines)
+            MSG=$(echo '${{ github.event.client_payload.spec_message }}' | head -1)
+            echo "message=${MSG}" >> "$GITHUB_OUTPUT"
+          else
+            # For manual trigger, read from submodule
+            SHA=$(git -C render-protocol-spec rev-parse HEAD)
+            echo "sha=${SHA}" >> "$GITHUB_OUTPUT"
+            echo "short_sha=$(echo ${SHA} | cut -c1-7)" >> "$GITHUB_OUTPUT"
+            echo "message=manual trigger" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Commit and push changes
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+
+          git add -A
+
+          # Only commit if there are changes
+          if git diff --cached --quiet; then
+            echo "✅ No changes to commit"
+            exit 0
+          fi
+
+          git commit -m "Chore: regenerate C++ from render-protocol-spec@${{ steps.spec.outputs.short_sha }}" \
+                      -m "Triggered by: ${{ steps.spec.outputs.message }}" \
+                      -m "Spec commit: ${{ steps.spec.outputs.sha }}"
+
+          git push

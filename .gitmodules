@@ -1,0 +1,3 @@
+[submodule "render-protocol-spec"]
+	path = render-protocol-spec
+	url = https://github.com/renderprotocol/render-protocol-spec.git
