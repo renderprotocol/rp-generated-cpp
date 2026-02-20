@@ -152,10 +152,10 @@ class RPScaffold;
 struct RPScaffoldDefaultTypeInternal;
 extern RPScaffoldDefaultTypeInternal _RPScaffold_default_instance_;
 extern const ::google::protobuf::internal::ClassDataFull RPScaffold_class_data_;
-class RPScrollView;
-struct RPScrollViewDefaultTypeInternal;
-extern RPScrollViewDefaultTypeInternal _RPScrollView_default_instance_;
-extern const ::google::protobuf::internal::ClassDataFull RPScrollView_class_data_;
+class RPScrollable;
+struct RPScrollableDefaultTypeInternal;
+extern RPScrollableDefaultTypeInternal _RPScrollable_default_instance_;
+extern const ::google::protobuf::internal::ClassDataFull RPScrollable_class_data_;
 class RPShadow;
 struct RPShadowDefaultTypeInternal;
 extern RPShadowDefaultTypeInternal _RPShadow_default_instance_;
@@ -5116,30 +5116,30 @@ class RPScaffold final : public ::google::protobuf::Message
 extern const ::google::protobuf::internal::ClassDataFull RPScaffold_class_data_;
 // -------------------------------------------------------------------
 
-class RPScrollView final : public ::google::protobuf::Message
-/* @@protoc_insertion_point(class_definition:proto.renderprotocol.ui.v1.RPScrollView) */ {
+class RPScrollable final : public ::google::protobuf::Message
+/* @@protoc_insertion_point(class_definition:proto.renderprotocol.ui.v1.RPScrollable) */ {
  public:
-  inline RPScrollView() : RPScrollView(nullptr) {}
-  ~RPScrollView() PROTOBUF_FINAL;
+  inline RPScrollable() : RPScrollable(nullptr) {}
+  ~RPScrollable() PROTOBUF_FINAL;
 
 #if defined(PROTOBUF_CUSTOM_VTABLE)
-  void operator delete(RPScrollView* PROTOBUF_NONNULL msg, ::std::destroying_delete_t) {
+  void operator delete(RPScrollable* PROTOBUF_NONNULL msg, ::std::destroying_delete_t) {
     SharedDtor(*msg);
-    ::google::protobuf::internal::SizedDelete(msg, sizeof(RPScrollView));
+    ::google::protobuf::internal::SizedDelete(msg, sizeof(RPScrollable));
   }
 #endif
 
   template <typename = void>
-  explicit PROTOBUF_CONSTEXPR RPScrollView(::google::protobuf::internal::ConstantInitialized);
+  explicit PROTOBUF_CONSTEXPR RPScrollable(::google::protobuf::internal::ConstantInitialized);
 
-  inline RPScrollView(const RPScrollView& from) : RPScrollView(nullptr, from) {}
-  inline RPScrollView(RPScrollView&& from) noexcept
-      : RPScrollView(nullptr, ::std::move(from)) {}
-  inline RPScrollView& operator=(const RPScrollView& from) {
+  inline RPScrollable(const RPScrollable& from) : RPScrollable(nullptr, from) {}
+  inline RPScrollable(RPScrollable&& from) noexcept
+      : RPScrollable(nullptr, ::std::move(from)) {}
+  inline RPScrollable& operator=(const RPScrollable& from) {
     CopyFrom(from);
     return *this;
   }
-  inline RPScrollView& operator=(RPScrollView&& from) noexcept {
+  inline RPScrollable& operator=(RPScrollable&& from) noexcept {
     if (this == &from) return *this;
     if (::google::protobuf::internal::CanMoveWithInternalSwap(GetArena(), from.GetArena())) {
       InternalSwap(&from);
@@ -5167,13 +5167,13 @@ class RPScrollView final : public ::google::protobuf::Message
   static const ::google::protobuf::Reflection* PROTOBUF_NONNULL GetReflection() {
     return default_instance().GetMetadata().reflection;
   }
-  static const RPScrollView& default_instance() {
-    return *reinterpret_cast<const RPScrollView*>(
-        &_RPScrollView_default_instance_);
+  static const RPScrollable& default_instance() {
+    return *reinterpret_cast<const RPScrollable*>(
+        &_RPScrollable_default_instance_);
   }
   static constexpr int kIndexInFileMessages = 4;
-  friend void swap(RPScrollView& a, RPScrollView& b) { a.Swap(&b); }
-  inline void Swap(RPScrollView* PROTOBUF_NONNULL other) {
+  friend void swap(RPScrollable& a, RPScrollable& b) { a.Swap(&b); }
+  inline void Swap(RPScrollable* PROTOBUF_NONNULL other) {
     if (other == this) return;
     if (::google::protobuf::internal::CanUseInternalSwap(GetArena(), other->GetArena())) {
       InternalSwap(other);
@@ -5181,7 +5181,7 @@ class RPScrollView final : public ::google::protobuf::Message
       ::google::protobuf::internal::GenericSwap(this, other);
     }
   }
-  void UnsafeArenaSwap(RPScrollView* PROTOBUF_NONNULL other) {
+  void UnsafeArenaSwap(RPScrollable* PROTOBUF_NONNULL other) {
     if (other == this) return;
     ABSL_DCHECK(GetArena() == other->GetArena());
     InternalSwap(other);
@@ -5189,13 +5189,13 @@ class RPScrollView final : public ::google::protobuf::Message
 
   // implements Message ----------------------------------------------
 
-  RPScrollView* PROTOBUF_NONNULL New(::google::protobuf::Arena* PROTOBUF_NULLABLE arena = nullptr) const {
-    return ::google::protobuf::Message::DefaultConstruct<RPScrollView>(arena);
+  RPScrollable* PROTOBUF_NONNULL New(::google::protobuf::Arena* PROTOBUF_NULLABLE arena = nullptr) const {
+    return ::google::protobuf::Message::DefaultConstruct<RPScrollable>(arena);
   }
   using ::google::protobuf::Message::CopyFrom;
-  void CopyFrom(const RPScrollView& from);
+  void CopyFrom(const RPScrollable& from);
   using ::google::protobuf::Message::MergeFrom;
-  void MergeFrom(const RPScrollView& from) { RPScrollView::MergeImpl(*this, from); }
+  void MergeFrom(const RPScrollable& from) { RPScrollable::MergeImpl(*this, from); }
 
   private:
   static void MergeImpl(::google::protobuf::MessageLite& to_msg,
@@ -5231,17 +5231,17 @@ class RPScrollView final : public ::google::protobuf::Message
   private:
   void SharedCtor(::google::protobuf::Arena* PROTOBUF_NULLABLE arena);
   static void SharedDtor(MessageLite& self);
-  void InternalSwap(RPScrollView* PROTOBUF_NONNULL other);
+  void InternalSwap(RPScrollable* PROTOBUF_NONNULL other);
  private:
   template <typename T>
   friend ::absl::string_view(::google::protobuf::internal::GetAnyMessageName)();
-  static ::absl::string_view FullMessageName() { return "proto.renderprotocol.ui.v1.RPScrollView"; }
+  static ::absl::string_view FullMessageName() { return "proto.renderprotocol.ui.v1.RPScrollable"; }
 
-  explicit RPScrollView(::google::protobuf::Arena* PROTOBUF_NULLABLE arena);
-  RPScrollView(::google::protobuf::Arena* PROTOBUF_NULLABLE arena, const RPScrollView& from);
-  RPScrollView(
-      ::google::protobuf::Arena* PROTOBUF_NULLABLE arena, RPScrollView&& from) noexcept
-      : RPScrollView(arena) {
+  explicit RPScrollable(::google::protobuf::Arena* PROTOBUF_NULLABLE arena);
+  RPScrollable(::google::protobuf::Arena* PROTOBUF_NULLABLE arena, const RPScrollable& from);
+  RPScrollable(
+      ::google::protobuf::Arena* PROTOBUF_NULLABLE arena, RPScrollable&& from) noexcept
+      : RPScrollable(arena) {
     *this = ::std::move(from);
   }
   const ::google::protobuf::internal::ClassData* PROTOBUF_NONNULL GetClassData() const PROTOBUF_FINAL;
@@ -5297,7 +5297,7 @@ class RPScrollView final : public ::google::protobuf::Message
   void _internal_set_shows_indicators(bool value);
 
   public:
-  // @@protoc_insertion_point(class_scope:proto.renderprotocol.ui.v1.RPScrollView)
+  // @@protoc_insertion_point(class_scope:proto.renderprotocol.ui.v1.RPScrollable)
  private:
   class _Internal;
   friend class ::google::protobuf::internal::TcParser;
@@ -5320,7 +5320,7 @@ class RPScrollView final : public ::google::protobuf::Message
     inline explicit Impl_(
         ::google::protobuf::internal::InternalVisibility visibility,
         ::google::protobuf::Arena* PROTOBUF_NULLABLE arena, const Impl_& from,
-        const RPScrollView& from_msg);
+        const RPScrollable& from_msg);
     ::google::protobuf::internal::HasBits<1> _has_bits_;
     ::google::protobuf::internal::CachedSize _cached_size_;
     ::proto::renderprotocol::ui::v1::RPWidget* PROTOBUF_NULLABLE child_;
@@ -5332,7 +5332,7 @@ class RPScrollView final : public ::google::protobuf::Message
   friend struct ::TableStruct_proto_2frenderprotocol_2fui_2fv1_2frp_5fui_5fcore_2eproto;
 };
 
-extern const ::google::protobuf::internal::ClassDataFull RPScrollView_class_data_;
+extern const ::google::protobuf::internal::ClassDataFull RPScrollable_class_data_;
 // -------------------------------------------------------------------
 
 class RPShadow final : public ::google::protobuf::Message
@@ -6835,23 +6835,23 @@ class RPWidget final : public ::google::protobuf::Message
   ::proto::renderprotocol::ui::v1::RPStack* PROTOBUF_NONNULL _internal_mutable_stack();
 
   public:
-  // .proto.renderprotocol.ui.v1.RPScrollView scroll_view = 58 [json_name = "scrollView"];
+  // .proto.renderprotocol.ui.v1.RPScrollable scroll_view = 58 [json_name = "scrollView"];
   bool has_scroll_view() const;
   private:
   bool _internal_has_scroll_view() const;
 
   public:
   void clear_scroll_view() ;
-  const ::proto::renderprotocol::ui::v1::RPScrollView& scroll_view() const;
-  [[nodiscard]] ::proto::renderprotocol::ui::v1::RPScrollView* PROTOBUF_NULLABLE release_scroll_view();
-  ::proto::renderprotocol::ui::v1::RPScrollView* PROTOBUF_NONNULL mutable_scroll_view();
-  void set_allocated_scroll_view(::proto::renderprotocol::ui::v1::RPScrollView* PROTOBUF_NULLABLE value);
-  void unsafe_arena_set_allocated_scroll_view(::proto::renderprotocol::ui::v1::RPScrollView* PROTOBUF_NULLABLE value);
-  ::proto::renderprotocol::ui::v1::RPScrollView* PROTOBUF_NULLABLE unsafe_arena_release_scroll_view();
+  const ::proto::renderprotocol::ui::v1::RPScrollable& scroll_view() const;
+  [[nodiscard]] ::proto::renderprotocol::ui::v1::RPScrollable* PROTOBUF_NULLABLE release_scroll_view();
+  ::proto::renderprotocol::ui::v1::RPScrollable* PROTOBUF_NONNULL mutable_scroll_view();
+  void set_allocated_scroll_view(::proto::renderprotocol::ui::v1::RPScrollable* PROTOBUF_NULLABLE value);
+  void unsafe_arena_set_allocated_scroll_view(::proto::renderprotocol::ui::v1::RPScrollable* PROTOBUF_NULLABLE value);
+  ::proto::renderprotocol::ui::v1::RPScrollable* PROTOBUF_NULLABLE unsafe_arena_release_scroll_view();
 
   private:
-  const ::proto::renderprotocol::ui::v1::RPScrollView& _internal_scroll_view() const;
-  ::proto::renderprotocol::ui::v1::RPScrollView* PROTOBUF_NONNULL _internal_mutable_scroll_view();
+  const ::proto::renderprotocol::ui::v1::RPScrollable& _internal_scroll_view() const;
+  ::proto::renderprotocol::ui::v1::RPScrollable* PROTOBUF_NONNULL _internal_mutable_scroll_view();
 
   public:
   // .proto.renderprotocol.ui.v1.RPLazyList lazy_list = 59 [json_name = "lazyList"];
@@ -8159,7 +8159,7 @@ inline ::proto::renderprotocol::ui::v1::RPStack* PROTOBUF_NONNULL RPWidget::muta
   return _msg;
 }
 
-// .proto.renderprotocol.ui.v1.RPScrollView scroll_view = 58 [json_name = "scrollView"];
+// .proto.renderprotocol.ui.v1.RPScrollable scroll_view = 58 [json_name = "scrollView"];
 inline bool RPWidget::has_scroll_view() const {
   return content_case() == kScrollView;
 }
@@ -8180,11 +8180,11 @@ inline void RPWidget::clear_scroll_view() {
     clear_has_content();
   }
 }
-inline ::proto::renderprotocol::ui::v1::RPScrollView* PROTOBUF_NULLABLE RPWidget::release_scroll_view() {
+inline ::proto::renderprotocol::ui::v1::RPScrollable* PROTOBUF_NULLABLE RPWidget::release_scroll_view() {
   // @@protoc_insertion_point(field_release:proto.renderprotocol.ui.v1.RPWidget.scroll_view)
   if (content_case() == kScrollView) {
     clear_has_content();
-    auto* temp = reinterpret_cast<::proto::renderprotocol::ui::v1::RPScrollView*>(_impl_.content_.scroll_view_);
+    auto* temp = reinterpret_cast<::proto::renderprotocol::ui::v1::RPScrollable*>(_impl_.content_.scroll_view_);
     if (GetArena() != nullptr) {
       temp = ::google::protobuf::internal::DuplicateIfNonNull(temp);
     }
@@ -8194,19 +8194,19 @@ inline ::proto::renderprotocol::ui::v1::RPScrollView* PROTOBUF_NULLABLE RPWidget
     return nullptr;
   }
 }
-inline const ::proto::renderprotocol::ui::v1::RPScrollView& RPWidget::_internal_scroll_view() const {
-  return content_case() == kScrollView ? static_cast<const ::proto::renderprotocol::ui::v1::RPScrollView&>(*reinterpret_cast<::proto::renderprotocol::ui::v1::RPScrollView*>(_impl_.content_.scroll_view_))
-                     : reinterpret_cast<const ::proto::renderprotocol::ui::v1::RPScrollView&>(::proto::renderprotocol::ui::v1::_RPScrollView_default_instance_);
+inline const ::proto::renderprotocol::ui::v1::RPScrollable& RPWidget::_internal_scroll_view() const {
+  return content_case() == kScrollView ? static_cast<const ::proto::renderprotocol::ui::v1::RPScrollable&>(*reinterpret_cast<::proto::renderprotocol::ui::v1::RPScrollable*>(_impl_.content_.scroll_view_))
+                     : reinterpret_cast<const ::proto::renderprotocol::ui::v1::RPScrollable&>(::proto::renderprotocol::ui::v1::_RPScrollable_default_instance_);
 }
-inline const ::proto::renderprotocol::ui::v1::RPScrollView& RPWidget::scroll_view() const ABSL_ATTRIBUTE_LIFETIME_BOUND {
+inline const ::proto::renderprotocol::ui::v1::RPScrollable& RPWidget::scroll_view() const ABSL_ATTRIBUTE_LIFETIME_BOUND {
   // @@protoc_insertion_point(field_get:proto.renderprotocol.ui.v1.RPWidget.scroll_view)
   return _internal_scroll_view();
 }
-inline ::proto::renderprotocol::ui::v1::RPScrollView* PROTOBUF_NULLABLE RPWidget::unsafe_arena_release_scroll_view() {
+inline ::proto::renderprotocol::ui::v1::RPScrollable* PROTOBUF_NULLABLE RPWidget::unsafe_arena_release_scroll_view() {
   // @@protoc_insertion_point(field_unsafe_arena_release:proto.renderprotocol.ui.v1.RPWidget.scroll_view)
   if (content_case() == kScrollView) {
     clear_has_content();
-    auto* temp = reinterpret_cast<::proto::renderprotocol::ui::v1::RPScrollView*>(_impl_.content_.scroll_view_);
+    auto* temp = reinterpret_cast<::proto::renderprotocol::ui::v1::RPScrollable*>(_impl_.content_.scroll_view_);
     _impl_.content_.scroll_view_ = nullptr;
     return temp;
   } else {
@@ -8214,7 +8214,7 @@ inline ::proto::renderprotocol::ui::v1::RPScrollView* PROTOBUF_NULLABLE RPWidget
   }
 }
 inline void RPWidget::unsafe_arena_set_allocated_scroll_view(
-    ::proto::renderprotocol::ui::v1::RPScrollView* PROTOBUF_NULLABLE value) {
+    ::proto::renderprotocol::ui::v1::RPScrollable* PROTOBUF_NULLABLE value) {
   // We rely on the oneof clear method to free the earlier contents
   // of this oneof. We can directly use the pointer we're given to
   // set the new value.
@@ -8225,18 +8225,18 @@ inline void RPWidget::unsafe_arena_set_allocated_scroll_view(
   }
   // @@protoc_insertion_point(field_unsafe_arena_set_allocated:proto.renderprotocol.ui.v1.RPWidget.scroll_view)
 }
-inline ::proto::renderprotocol::ui::v1::RPScrollView* PROTOBUF_NONNULL RPWidget::_internal_mutable_scroll_view() {
+inline ::proto::renderprotocol::ui::v1::RPScrollable* PROTOBUF_NONNULL RPWidget::_internal_mutable_scroll_view() {
   if (content_case() != kScrollView) {
     clear_content();
     set_has_scroll_view();
     _impl_.content_.scroll_view_ = reinterpret_cast<::google::protobuf::Message*>(
-        ::google::protobuf::Message::DefaultConstruct<::proto::renderprotocol::ui::v1::RPScrollView>(GetArena()));
+        ::google::protobuf::Message::DefaultConstruct<::proto::renderprotocol::ui::v1::RPScrollable>(GetArena()));
   }
-  return reinterpret_cast<::proto::renderprotocol::ui::v1::RPScrollView*>(_impl_.content_.scroll_view_);
+  return reinterpret_cast<::proto::renderprotocol::ui::v1::RPScrollable*>(_impl_.content_.scroll_view_);
 }
-inline ::proto::renderprotocol::ui::v1::RPScrollView* PROTOBUF_NONNULL RPWidget::mutable_scroll_view()
+inline ::proto::renderprotocol::ui::v1::RPScrollable* PROTOBUF_NONNULL RPWidget::mutable_scroll_view()
     ABSL_ATTRIBUTE_LIFETIME_BOUND {
-  ::proto::renderprotocol::ui::v1::RPScrollView* _msg = _internal_mutable_scroll_view();
+  ::proto::renderprotocol::ui::v1::RPScrollable* _msg = _internal_mutable_scroll_view();
   // @@protoc_insertion_point(field_mutable:proto.renderprotocol.ui.v1.RPWidget.scroll_view)
   return _msg;
 }
@@ -11164,30 +11164,30 @@ inline void RPStack::_internal_set_alignment(::proto::renderprotocol::ui::v1::RP
 
 // -------------------------------------------------------------------
 
-// RPScrollView
+// RPScrollable
 
 // .proto.renderprotocol.ui.v1.RPWidget child = 1 [json_name = "child"];
-inline bool RPScrollView::has_child() const {
+inline bool RPScrollable::has_child() const {
   bool value = CheckHasBit(_impl_._has_bits_[0], 0x00000001U);
   PROTOBUF_ASSUME(!value || _impl_.child_ != nullptr);
   return value;
 }
-inline void RPScrollView::clear_child() {
+inline void RPScrollable::clear_child() {
   ::google::protobuf::internal::TSanWrite(&_impl_);
   if (_impl_.child_ != nullptr) _impl_.child_->Clear();
   ClearHasBit(_impl_._has_bits_[0],
                   0x00000001U);
 }
-inline const ::proto::renderprotocol::ui::v1::RPWidget& RPScrollView::_internal_child() const {
+inline const ::proto::renderprotocol::ui::v1::RPWidget& RPScrollable::_internal_child() const {
   ::google::protobuf::internal::TSanRead(&_impl_);
   const ::proto::renderprotocol::ui::v1::RPWidget* p = _impl_.child_;
   return p != nullptr ? *p : reinterpret_cast<const ::proto::renderprotocol::ui::v1::RPWidget&>(::proto::renderprotocol::ui::v1::_RPWidget_default_instance_);
 }
-inline const ::proto::renderprotocol::ui::v1::RPWidget& RPScrollView::child() const ABSL_ATTRIBUTE_LIFETIME_BOUND {
-  // @@protoc_insertion_point(field_get:proto.renderprotocol.ui.v1.RPScrollView.child)
+inline const ::proto::renderprotocol::ui::v1::RPWidget& RPScrollable::child() const ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  // @@protoc_insertion_point(field_get:proto.renderprotocol.ui.v1.RPScrollable.child)
   return _internal_child();
 }
-inline void RPScrollView::unsafe_arena_set_allocated_child(
+inline void RPScrollable::unsafe_arena_set_allocated_child(
     ::proto::renderprotocol::ui::v1::RPWidget* PROTOBUF_NULLABLE value) {
   ::google::protobuf::internal::TSanWrite(&_impl_);
   if (GetArena() == nullptr) {
@@ -11199,9 +11199,9 @@ inline void RPScrollView::unsafe_arena_set_allocated_child(
   } else {
     ClearHasBit(_impl_._has_bits_[0], 0x00000001U);
   }
-  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:proto.renderprotocol.ui.v1.RPScrollView.child)
+  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:proto.renderprotocol.ui.v1.RPScrollable.child)
 }
-inline ::proto::renderprotocol::ui::v1::RPWidget* PROTOBUF_NULLABLE RPScrollView::release_child() {
+inline ::proto::renderprotocol::ui::v1::RPWidget* PROTOBUF_NULLABLE RPScrollable::release_child() {
   ::google::protobuf::internal::TSanWrite(&_impl_);
 
   ClearHasBit(_impl_._has_bits_[0], 0x00000001U);
@@ -11220,16 +11220,16 @@ inline ::proto::renderprotocol::ui::v1::RPWidget* PROTOBUF_NULLABLE RPScrollView
   }
   return released;
 }
-inline ::proto::renderprotocol::ui::v1::RPWidget* PROTOBUF_NULLABLE RPScrollView::unsafe_arena_release_child() {
+inline ::proto::renderprotocol::ui::v1::RPWidget* PROTOBUF_NULLABLE RPScrollable::unsafe_arena_release_child() {
   ::google::protobuf::internal::TSanWrite(&_impl_);
-  // @@protoc_insertion_point(field_release:proto.renderprotocol.ui.v1.RPScrollView.child)
+  // @@protoc_insertion_point(field_release:proto.renderprotocol.ui.v1.RPScrollable.child)
 
   ClearHasBit(_impl_._has_bits_[0], 0x00000001U);
   ::proto::renderprotocol::ui::v1::RPWidget* temp = _impl_.child_;
   _impl_.child_ = nullptr;
   return temp;
 }
-inline ::proto::renderprotocol::ui::v1::RPWidget* PROTOBUF_NONNULL RPScrollView::_internal_mutable_child() {
+inline ::proto::renderprotocol::ui::v1::RPWidget* PROTOBUF_NONNULL RPScrollable::_internal_mutable_child() {
   ::google::protobuf::internal::TSanWrite(&_impl_);
   if (_impl_.child_ == nullptr) {
     auto* p = ::google::protobuf::Message::DefaultConstruct<::proto::renderprotocol::ui::v1::RPWidget>(GetArena());
@@ -11237,14 +11237,14 @@ inline ::proto::renderprotocol::ui::v1::RPWidget* PROTOBUF_NONNULL RPScrollView:
   }
   return _impl_.child_;
 }
-inline ::proto::renderprotocol::ui::v1::RPWidget* PROTOBUF_NONNULL RPScrollView::mutable_child()
+inline ::proto::renderprotocol::ui::v1::RPWidget* PROTOBUF_NONNULL RPScrollable::mutable_child()
     ABSL_ATTRIBUTE_LIFETIME_BOUND {
   SetHasBit(_impl_._has_bits_[0], 0x00000001U);
   ::proto::renderprotocol::ui::v1::RPWidget* _msg = _internal_mutable_child();
-  // @@protoc_insertion_point(field_mutable:proto.renderprotocol.ui.v1.RPScrollView.child)
+  // @@protoc_insertion_point(field_mutable:proto.renderprotocol.ui.v1.RPScrollable.child)
   return _msg;
 }
-inline void RPScrollView::set_allocated_child(::proto::renderprotocol::ui::v1::RPWidget* PROTOBUF_NULLABLE value) {
+inline void RPScrollable::set_allocated_child(::proto::renderprotocol::ui::v1::RPWidget* PROTOBUF_NULLABLE value) {
   ::google::protobuf::Arena* message_arena = GetArena();
   ::google::protobuf::internal::TSanWrite(&_impl_);
   if (message_arena == nullptr) {
@@ -11262,55 +11262,55 @@ inline void RPScrollView::set_allocated_child(::proto::renderprotocol::ui::v1::R
   }
 
   _impl_.child_ = reinterpret_cast<::proto::renderprotocol::ui::v1::RPWidget*>(value);
-  // @@protoc_insertion_point(field_set_allocated:proto.renderprotocol.ui.v1.RPScrollView.child)
+  // @@protoc_insertion_point(field_set_allocated:proto.renderprotocol.ui.v1.RPScrollable.child)
 }
 
 // .proto.renderprotocol.ui.v1.RPAxis axis = 2 [json_name = "axis"];
-inline void RPScrollView::clear_axis() {
+inline void RPScrollable::clear_axis() {
   ::google::protobuf::internal::TSanWrite(&_impl_);
   _impl_.axis_ = 0;
   ClearHasBit(_impl_._has_bits_[0],
                   0x00000002U);
 }
-inline ::proto::renderprotocol::ui::v1::RPAxis RPScrollView::axis() const {
-  // @@protoc_insertion_point(field_get:proto.renderprotocol.ui.v1.RPScrollView.axis)
+inline ::proto::renderprotocol::ui::v1::RPAxis RPScrollable::axis() const {
+  // @@protoc_insertion_point(field_get:proto.renderprotocol.ui.v1.RPScrollable.axis)
   return _internal_axis();
 }
-inline void RPScrollView::set_axis(::proto::renderprotocol::ui::v1::RPAxis value) {
+inline void RPScrollable::set_axis(::proto::renderprotocol::ui::v1::RPAxis value) {
   _internal_set_axis(value);
   SetHasBit(_impl_._has_bits_[0], 0x00000002U);
-  // @@protoc_insertion_point(field_set:proto.renderprotocol.ui.v1.RPScrollView.axis)
+  // @@protoc_insertion_point(field_set:proto.renderprotocol.ui.v1.RPScrollable.axis)
 }
-inline ::proto::renderprotocol::ui::v1::RPAxis RPScrollView::_internal_axis() const {
+inline ::proto::renderprotocol::ui::v1::RPAxis RPScrollable::_internal_axis() const {
   ::google::protobuf::internal::TSanRead(&_impl_);
   return static_cast<::proto::renderprotocol::ui::v1::RPAxis>(_impl_.axis_);
 }
-inline void RPScrollView::_internal_set_axis(::proto::renderprotocol::ui::v1::RPAxis value) {
+inline void RPScrollable::_internal_set_axis(::proto::renderprotocol::ui::v1::RPAxis value) {
   ::google::protobuf::internal::TSanWrite(&_impl_);
   _impl_.axis_ = value;
 }
 
 // bool shows_indicators = 3 [json_name = "showsIndicators"];
-inline void RPScrollView::clear_shows_indicators() {
+inline void RPScrollable::clear_shows_indicators() {
   ::google::protobuf::internal::TSanWrite(&_impl_);
   _impl_.shows_indicators_ = false;
   ClearHasBit(_impl_._has_bits_[0],
                   0x00000004U);
 }
-inline bool RPScrollView::shows_indicators() const {
-  // @@protoc_insertion_point(field_get:proto.renderprotocol.ui.v1.RPScrollView.shows_indicators)
+inline bool RPScrollable::shows_indicators() const {
+  // @@protoc_insertion_point(field_get:proto.renderprotocol.ui.v1.RPScrollable.shows_indicators)
   return _internal_shows_indicators();
 }
-inline void RPScrollView::set_shows_indicators(bool value) {
+inline void RPScrollable::set_shows_indicators(bool value) {
   _internal_set_shows_indicators(value);
   SetHasBit(_impl_._has_bits_[0], 0x00000004U);
-  // @@protoc_insertion_point(field_set:proto.renderprotocol.ui.v1.RPScrollView.shows_indicators)
+  // @@protoc_insertion_point(field_set:proto.renderprotocol.ui.v1.RPScrollable.shows_indicators)
 }
-inline bool RPScrollView::_internal_shows_indicators() const {
+inline bool RPScrollable::_internal_shows_indicators() const {
   ::google::protobuf::internal::TSanRead(&_impl_);
   return _impl_.shows_indicators_;
 }
-inline void RPScrollView::_internal_set_shows_indicators(bool value) {
+inline void RPScrollable::_internal_set_shows_indicators(bool value) {
   ::google::protobuf::internal::TSanWrite(&_impl_);
   _impl_.shows_indicators_ = value;
 }

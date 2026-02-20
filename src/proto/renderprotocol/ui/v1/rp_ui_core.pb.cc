@@ -609,7 +609,7 @@ struct RPScaffoldDefaultTypeInternal {
 PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
     PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 RPScaffoldDefaultTypeInternal _RPScaffold_default_instance_;
 
-inline constexpr RPScrollView::Impl_::Impl_(
+inline constexpr RPScrollable::Impl_::Impl_(
     ::_pbi::ConstantInitialized) noexcept
       : _cached_size_{0},
         child_{nullptr},
@@ -617,24 +617,24 @@ inline constexpr RPScrollView::Impl_::Impl_(
         shows_indicators_{false} {}
 
 template <typename>
-PROTOBUF_CONSTEXPR RPScrollView::RPScrollView(::_pbi::ConstantInitialized)
+PROTOBUF_CONSTEXPR RPScrollable::RPScrollable(::_pbi::ConstantInitialized)
 #if defined(PROTOBUF_CUSTOM_VTABLE)
-    : ::google::protobuf::Message(RPScrollView_class_data_.base()),
+    : ::google::protobuf::Message(RPScrollable_class_data_.base()),
 #else   // PROTOBUF_CUSTOM_VTABLE
     : ::google::protobuf::Message(),
 #endif  // PROTOBUF_CUSTOM_VTABLE
       _impl_(::_pbi::ConstantInitialized()) {
 }
-struct RPScrollViewDefaultTypeInternal {
-  PROTOBUF_CONSTEXPR RPScrollViewDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
-  ~RPScrollViewDefaultTypeInternal() {}
+struct RPScrollableDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR RPScrollableDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  ~RPScrollableDefaultTypeInternal() {}
   union {
-    RPScrollView _instance;
+    RPScrollable _instance;
   };
 };
 
 PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
-    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 RPScrollViewDefaultTypeInternal _RPScrollView_default_instance_;
+    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 RPScrollableDefaultTypeInternal _RPScrollable_default_instance_;
 
 inline constexpr RPShadow::Impl_::Impl_(
     ::_pbi::ConstantInitialized) noexcept
@@ -954,11 +954,11 @@ const ::uint32_t
         0,
         1,
         0x081, // bitmap
-        PROTOBUF_FIELD_OFFSET(::proto::renderprotocol::ui::v1::RPScrollView, _impl_._has_bits_),
+        PROTOBUF_FIELD_OFFSET(::proto::renderprotocol::ui::v1::RPScrollable, _impl_._has_bits_),
         6, // hasbit index offset
-        PROTOBUF_FIELD_OFFSET(::proto::renderprotocol::ui::v1::RPScrollView, _impl_.child_),
-        PROTOBUF_FIELD_OFFSET(::proto::renderprotocol::ui::v1::RPScrollView, _impl_.axis_),
-        PROTOBUF_FIELD_OFFSET(::proto::renderprotocol::ui::v1::RPScrollView, _impl_.shows_indicators_),
+        PROTOBUF_FIELD_OFFSET(::proto::renderprotocol::ui::v1::RPScrollable, _impl_.child_),
+        PROTOBUF_FIELD_OFFSET(::proto::renderprotocol::ui::v1::RPScrollable, _impl_.axis_),
+        PROTOBUF_FIELD_OFFSET(::proto::renderprotocol::ui::v1::RPScrollable, _impl_.shows_indicators_),
         0,
         1,
         2,
@@ -1230,7 +1230,7 @@ static const ::_pbi::MigrationSchema
         {81, sizeof(::proto::renderprotocol::ui::v1::RPRow)},
         {90, sizeof(::proto::renderprotocol::ui::v1::RPColumn)},
         {99, sizeof(::proto::renderprotocol::ui::v1::RPStack)},
-        {106, sizeof(::proto::renderprotocol::ui::v1::RPScrollView)},
+        {106, sizeof(::proto::renderprotocol::ui::v1::RPScrollable)},
         {115, sizeof(::proto::renderprotocol::ui::v1::RPLazyList)},
         {128, sizeof(::proto::renderprotocol::ui::v1::RPLazyGrid)},
         {139, sizeof(::proto::renderprotocol::ui::v1::RPWrap)},
@@ -1261,7 +1261,7 @@ static const ::_pb::Message* PROTOBUF_NONNULL const file_default_instances[] = {
     &::proto::renderprotocol::ui::v1::_RPRow_default_instance_._instance,
     &::proto::renderprotocol::ui::v1::_RPColumn_default_instance_._instance,
     &::proto::renderprotocol::ui::v1::_RPStack_default_instance_._instance,
-    &::proto::renderprotocol::ui::v1::_RPScrollView_default_instance_._instance,
+    &::proto::renderprotocol::ui::v1::_RPScrollable_default_instance_._instance,
     &::proto::renderprotocol::ui::v1::_RPLazyList_default_instance_._instance,
     &::proto::renderprotocol::ui::v1::_RPLazyGrid_default_instance_._instance,
     &::proto::renderprotocol::ui::v1::_RPWrap_default_instance_._instance,
@@ -1312,7 +1312,7 @@ const char descriptor_table_protodef_proto_2frenderprotocol_2fui_2fv1_2frp_5fui_
     "H\000R\006column\022;\n\005stack\0305 \001(\0132#.proto.render"
     "protocol.ui.v1.RPStackH\000R\005stack\022K\n\013scrol"
     "l_view\030: \001(\0132(.proto.renderprotocol.ui.v"
-    "1.RPScrollViewH\000R\nscrollView\022E\n\tlazy_lis"
+    "1.RPScrollableH\000R\nscrollView\022E\n\tlazy_lis"
     "t\030; \001(\0132&.proto.renderprotocol.ui.v1.RPL"
     "azyListH\000R\010lazyList\022E\n\tlazy_grid\030< \001(\0132&"
     ".proto.renderprotocol.ui.v1.RPLazyGridH\000"
@@ -1383,7 +1383,7 @@ const char descriptor_table_protodef_proto_2frenderprotocol_2fui_2fv1_2frp_5fui_
     "enderprotocol.ui.v1.RPWidgetR\010children\022E"
     "\n\talignment\030\002 \001(\0162\'.proto.renderprotocol"
     ".ui.v1.RPAlignmentR\talignment\"\255\001\n\014RPScro"
-    "llView\022:\n\005child\030\001 \001(\0132$.proto.renderprot"
+    "llable\022:\n\005child\030\001 \001(\0132$.proto.renderprot"
     "ocol.ui.v1.RPWidgetR\005child\0226\n\004axis\030\002 \001(\016"
     "2\".proto.renderprotocol.ui.v1.RPAxisR\004ax"
     "is\022)\n\020shows_indicators\030\003 \001(\010R\017showsIndic"
@@ -1620,7 +1620,7 @@ void RPWidget::set_allocated_stack(::proto::renderprotocol::ui::v1::RPStack* PRO
   }
   // @@protoc_insertion_point(field_set_allocated:proto.renderprotocol.ui.v1.RPWidget.stack)
 }
-void RPWidget::set_allocated_scroll_view(::proto::renderprotocol::ui::v1::RPScrollView* PROTOBUF_NULLABLE scroll_view) {
+void RPWidget::set_allocated_scroll_view(::proto::renderprotocol::ui::v1::RPScrollable* PROTOBUF_NULLABLE scroll_view) {
   ::google::protobuf::Arena* message_arena = GetArena();
   clear_content();
   if (scroll_view) {
@@ -2736,7 +2736,7 @@ RPWidget::_table_ = {
     {PROTOBUF_FIELD_OFFSET(RPWidget, _impl_.content_.column_), _Internal::kOneofCaseOffset + 0, 1, (0 | ::_fl::kFcOneof | ::_fl::kMessage | ::_fl::kTvTable)},
     // .proto.renderprotocol.ui.v1.RPStack stack = 53 [json_name = "stack"];
     {PROTOBUF_FIELD_OFFSET(RPWidget, _impl_.content_.stack_), _Internal::kOneofCaseOffset + 0, 2, (0 | ::_fl::kFcOneof | ::_fl::kMessage | ::_fl::kTvTable)},
-    // .proto.renderprotocol.ui.v1.RPScrollView scroll_view = 58 [json_name = "scrollView"];
+    // .proto.renderprotocol.ui.v1.RPScrollable scroll_view = 58 [json_name = "scrollView"];
     {PROTOBUF_FIELD_OFFSET(RPWidget, _impl_.content_.scroll_view_), _Internal::kOneofCaseOffset + 0, 3, (0 | ::_fl::kFcOneof | ::_fl::kMessage | ::_fl::kTvTable)},
     // .proto.renderprotocol.ui.v1.RPLazyList lazy_list = 59 [json_name = "lazyList"];
     {PROTOBUF_FIELD_OFFSET(RPWidget, _impl_.content_.lazy_list_), _Internal::kOneofCaseOffset + 0, 4, (0 | ::_fl::kFcOneof | ::_fl::kMessage | ::_fl::kTvTable)},
@@ -2809,7 +2809,7 @@ RPWidget::_table_ = {
       {::_pbi::TcParser::GetTable<::proto::renderprotocol::ui::v1::RPRow>()},
       {::_pbi::TcParser::GetTable<::proto::renderprotocol::ui::v1::RPColumn>()},
       {::_pbi::TcParser::GetTable<::proto::renderprotocol::ui::v1::RPStack>()},
-      {::_pbi::TcParser::GetTable<::proto::renderprotocol::ui::v1::RPScrollView>()},
+      {::_pbi::TcParser::GetTable<::proto::renderprotocol::ui::v1::RPScrollable>()},
       {::_pbi::TcParser::GetTable<::proto::renderprotocol::ui::v1::RPLazyList>()},
       {::_pbi::TcParser::GetTable<::proto::renderprotocol::ui::v1::RPLazyGrid>()},
       {::_pbi::TcParser::GetTable<::proto::renderprotocol::ui::v1::RPWrap>()},
@@ -3173,7 +3173,7 @@ PROTOBUF_NOINLINE void RPWidget::Clear() {
                     ::google::protobuf::internal::WireFormatLite::MessageSize(*this_._impl_.content_.stack_);
       break;
     }
-    // .proto.renderprotocol.ui.v1.RPScrollView scroll_view = 58 [json_name = "scrollView"];
+    // .proto.renderprotocol.ui.v1.RPScrollable scroll_view = 58 [json_name = "scrollView"];
     case kScrollView: {
       total_size += 2 +
                     ::google::protobuf::internal::WireFormatLite::MessageSize(*this_._impl_.content_.scroll_view_);
@@ -4797,39 +4797,39 @@ void RPStack::InternalSwap(RPStack* PROTOBUF_RESTRICT PROTOBUF_NONNULL other) {
 }
 // ===================================================================
 
-class RPScrollView::_Internal {
+class RPScrollable::_Internal {
  public:
   using HasBits =
-      decltype(::std::declval<RPScrollView>()._impl_._has_bits_);
+      decltype(::std::declval<RPScrollable>()._impl_._has_bits_);
   static constexpr ::int32_t kHasBitsOffset =
-      8 * PROTOBUF_FIELD_OFFSET(RPScrollView, _impl_._has_bits_);
+      8 * PROTOBUF_FIELD_OFFSET(RPScrollable, _impl_._has_bits_);
 };
 
-RPScrollView::RPScrollView(::google::protobuf::Arena* PROTOBUF_NULLABLE arena)
+RPScrollable::RPScrollable(::google::protobuf::Arena* PROTOBUF_NULLABLE arena)
 #if defined(PROTOBUF_CUSTOM_VTABLE)
-    : ::google::protobuf::Message(arena, RPScrollView_class_data_.base()) {
+    : ::google::protobuf::Message(arena, RPScrollable_class_data_.base()) {
 #else   // PROTOBUF_CUSTOM_VTABLE
     : ::google::protobuf::Message(arena) {
 #endif  // PROTOBUF_CUSTOM_VTABLE
   SharedCtor(arena);
-  // @@protoc_insertion_point(arena_constructor:proto.renderprotocol.ui.v1.RPScrollView)
+  // @@protoc_insertion_point(arena_constructor:proto.renderprotocol.ui.v1.RPScrollable)
 }
-PROTOBUF_NDEBUG_INLINE RPScrollView::Impl_::Impl_(
+PROTOBUF_NDEBUG_INLINE RPScrollable::Impl_::Impl_(
     [[maybe_unused]] ::google::protobuf::internal::InternalVisibility visibility,
     [[maybe_unused]] ::google::protobuf::Arena* PROTOBUF_NULLABLE arena, const Impl_& from,
-    [[maybe_unused]] const ::proto::renderprotocol::ui::v1::RPScrollView& from_msg)
+    [[maybe_unused]] const ::proto::renderprotocol::ui::v1::RPScrollable& from_msg)
       : _has_bits_{from._has_bits_},
         _cached_size_{0} {}
 
-RPScrollView::RPScrollView(
+RPScrollable::RPScrollable(
     ::google::protobuf::Arena* PROTOBUF_NULLABLE arena,
-    const RPScrollView& from)
+    const RPScrollable& from)
 #if defined(PROTOBUF_CUSTOM_VTABLE)
-    : ::google::protobuf::Message(arena, RPScrollView_class_data_.base()) {
+    : ::google::protobuf::Message(arena, RPScrollable_class_data_.base()) {
 #else   // PROTOBUF_CUSTOM_VTABLE
     : ::google::protobuf::Message(arena) {
 #endif  // PROTOBUF_CUSTOM_VTABLE
-  RPScrollView* const _this = this;
+  RPScrollable* const _this = this;
   (void)_this;
   _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
       from._internal_metadata_);
@@ -4846,14 +4846,14 @@ RPScrollView::RPScrollView(
                offsetof(Impl_, axis_) +
                sizeof(Impl_::shows_indicators_));
 
-  // @@protoc_insertion_point(copy_constructor:proto.renderprotocol.ui.v1.RPScrollView)
+  // @@protoc_insertion_point(copy_constructor:proto.renderprotocol.ui.v1.RPScrollable)
 }
-PROTOBUF_NDEBUG_INLINE RPScrollView::Impl_::Impl_(
+PROTOBUF_NDEBUG_INLINE RPScrollable::Impl_::Impl_(
     [[maybe_unused]] ::google::protobuf::internal::InternalVisibility visibility,
     [[maybe_unused]] ::google::protobuf::Arena* PROTOBUF_NULLABLE arena)
       : _cached_size_{0} {}
 
-inline void RPScrollView::SharedCtor(::_pb::Arena* PROTOBUF_NULLABLE arena) {
+inline void RPScrollable::SharedCtor(::_pb::Arena* PROTOBUF_NULLABLE arena) {
   new (&_impl_) Impl_(internal_visibility(), arena);
   ::memset(reinterpret_cast<char*>(&_impl_) +
                offsetof(Impl_, child_),
@@ -4862,12 +4862,12 @@ inline void RPScrollView::SharedCtor(::_pb::Arena* PROTOBUF_NULLABLE arena) {
                offsetof(Impl_, child_) +
                sizeof(Impl_::shows_indicators_));
 }
-RPScrollView::~RPScrollView() {
-  // @@protoc_insertion_point(destructor:proto.renderprotocol.ui.v1.RPScrollView)
+RPScrollable::~RPScrollable() {
+  // @@protoc_insertion_point(destructor:proto.renderprotocol.ui.v1.RPScrollable)
   SharedDtor(*this);
 }
-inline void RPScrollView::SharedDtor(MessageLite& self) {
-  RPScrollView& this_ = static_cast<RPScrollView&>(self);
+inline void RPScrollable::SharedDtor(MessageLite& self) {
+  RPScrollable& this_ = static_cast<RPScrollable&>(self);
   if constexpr (::_pbi::DebugHardenCheckHasBitConsistency()) {
     this_.CheckHasBitConsistency();
   }
@@ -4877,53 +4877,53 @@ inline void RPScrollView::SharedDtor(MessageLite& self) {
   this_._impl_.~Impl_();
 }
 
-inline void* PROTOBUF_NONNULL RPScrollView::PlacementNew_(
+inline void* PROTOBUF_NONNULL RPScrollable::PlacementNew_(
     const void* PROTOBUF_NONNULL, void* PROTOBUF_NONNULL mem,
     ::google::protobuf::Arena* PROTOBUF_NULLABLE arena) {
-  return ::new (mem) RPScrollView(arena);
+  return ::new (mem) RPScrollable(arena);
 }
-constexpr auto RPScrollView::InternalNewImpl_() {
-  return ::google::protobuf::internal::MessageCreator::ZeroInit(sizeof(RPScrollView),
-                                            alignof(RPScrollView));
+constexpr auto RPScrollable::InternalNewImpl_() {
+  return ::google::protobuf::internal::MessageCreator::ZeroInit(sizeof(RPScrollable),
+                                            alignof(RPScrollable));
 }
-constexpr auto RPScrollView::InternalGenerateClassData_() {
+constexpr auto RPScrollable::InternalGenerateClassData_() {
   return ::google::protobuf::internal::ClassDataFull{
       ::google::protobuf::internal::ClassData{
-          &_RPScrollView_default_instance_._instance,
+          &_RPScrollable_default_instance_._instance,
           &_table_.header,
           nullptr,  // OnDemandRegisterArenaDtor
           nullptr,  // IsInitialized
-          &RPScrollView::MergeImpl,
-          ::google::protobuf::Message::GetNewImpl<RPScrollView>(),
+          &RPScrollable::MergeImpl,
+          ::google::protobuf::Message::GetNewImpl<RPScrollable>(),
 #if defined(PROTOBUF_CUSTOM_VTABLE)
-          &RPScrollView::SharedDtor,
-          ::google::protobuf::Message::GetClearImpl<RPScrollView>(), &RPScrollView::ByteSizeLong,
-              &RPScrollView::_InternalSerialize,
+          &RPScrollable::SharedDtor,
+          ::google::protobuf::Message::GetClearImpl<RPScrollable>(), &RPScrollable::ByteSizeLong,
+              &RPScrollable::_InternalSerialize,
 #endif  // PROTOBUF_CUSTOM_VTABLE
-          PROTOBUF_FIELD_OFFSET(RPScrollView, _impl_._cached_size_),
+          PROTOBUF_FIELD_OFFSET(RPScrollable, _impl_._cached_size_),
           false,
       },
-      &RPScrollView::kDescriptorMethods,
+      &RPScrollable::kDescriptorMethods,
       &descriptor_table_proto_2frenderprotocol_2fui_2fv1_2frp_5fui_5fcore_2eproto,
       nullptr,  // tracker
   };
 }
 
 PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 const
-    ::google::protobuf::internal::ClassDataFull RPScrollView_class_data_ =
-        RPScrollView::InternalGenerateClassData_();
+    ::google::protobuf::internal::ClassDataFull RPScrollable_class_data_ =
+        RPScrollable::InternalGenerateClassData_();
 
 PROTOBUF_ATTRIBUTE_WEAK const ::google::protobuf::internal::ClassData* PROTOBUF_NONNULL
-RPScrollView::GetClassData() const {
-  ::google::protobuf::internal::PrefetchToLocalCache(&RPScrollView_class_data_);
-  ::google::protobuf::internal::PrefetchToLocalCache(RPScrollView_class_data_.tc_table);
-  return RPScrollView_class_data_.base();
+RPScrollable::GetClassData() const {
+  ::google::protobuf::internal::PrefetchToLocalCache(&RPScrollable_class_data_);
+  ::google::protobuf::internal::PrefetchToLocalCache(RPScrollable_class_data_.tc_table);
+  return RPScrollable_class_data_.base();
 }
 PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
 const ::_pbi::TcParseTable<2, 3, 1, 0, 2>
-RPScrollView::_table_ = {
+RPScrollable::_table_ = {
   {
-    PROTOBUF_FIELD_OFFSET(RPScrollView, _impl_._has_bits_),
+    PROTOBUF_FIELD_OFFSET(RPScrollable, _impl_._has_bits_),
     0, // no _extensions_
     3, 24,  // max_field_number, fast_idx_mask
     offsetof(decltype(_table_), field_lookup_table),
@@ -4932,35 +4932,35 @@ RPScrollView::_table_ = {
     3,  // num_field_entries
     1,  // num_aux_entries
     offsetof(decltype(_table_), aux_entries),
-    RPScrollView_class_data_.base(),
+    RPScrollable_class_data_.base(),
     nullptr,  // post_loop_handler
     ::_pbi::TcParser::GenericFallback,  // fallback
     #ifdef PROTOBUF_PREFETCH_PARSE_TABLE
-    ::_pbi::TcParser::GetTable<::proto::renderprotocol::ui::v1::RPScrollView>(),  // to_prefetch
+    ::_pbi::TcParser::GetTable<::proto::renderprotocol::ui::v1::RPScrollable>(),  // to_prefetch
     #endif  // PROTOBUF_PREFETCH_PARSE_TABLE
   }, {{
     {::_pbi::TcParser::MiniParse, {}},
     // .proto.renderprotocol.ui.v1.RPWidget child = 1 [json_name = "child"];
     {::_pbi::TcParser::FastMtS1,
      {10, 0, 0,
-      PROTOBUF_FIELD_OFFSET(RPScrollView, _impl_.child_)}},
+      PROTOBUF_FIELD_OFFSET(RPScrollable, _impl_.child_)}},
     // .proto.renderprotocol.ui.v1.RPAxis axis = 2 [json_name = "axis"];
-    {::_pbi::TcParser::SingularVarintNoZag1<::uint32_t, offsetof(RPScrollView, _impl_.axis_), 1>(),
+    {::_pbi::TcParser::SingularVarintNoZag1<::uint32_t, offsetof(RPScrollable, _impl_.axis_), 1>(),
      {16, 1, 0,
-      PROTOBUF_FIELD_OFFSET(RPScrollView, _impl_.axis_)}},
+      PROTOBUF_FIELD_OFFSET(RPScrollable, _impl_.axis_)}},
     // bool shows_indicators = 3 [json_name = "showsIndicators"];
-    {::_pbi::TcParser::SingularVarintNoZag1<bool, offsetof(RPScrollView, _impl_.shows_indicators_), 2>(),
+    {::_pbi::TcParser::SingularVarintNoZag1<bool, offsetof(RPScrollable, _impl_.shows_indicators_), 2>(),
      {24, 2, 0,
-      PROTOBUF_FIELD_OFFSET(RPScrollView, _impl_.shows_indicators_)}},
+      PROTOBUF_FIELD_OFFSET(RPScrollable, _impl_.shows_indicators_)}},
   }}, {{
     65535, 65535
   }}, {{
     // .proto.renderprotocol.ui.v1.RPWidget child = 1 [json_name = "child"];
-    {PROTOBUF_FIELD_OFFSET(RPScrollView, _impl_.child_), _Internal::kHasBitsOffset + 0, 0, (0 | ::_fl::kFcOptional | ::_fl::kMessage | ::_fl::kTvTable)},
+    {PROTOBUF_FIELD_OFFSET(RPScrollable, _impl_.child_), _Internal::kHasBitsOffset + 0, 0, (0 | ::_fl::kFcOptional | ::_fl::kMessage | ::_fl::kTvTable)},
     // .proto.renderprotocol.ui.v1.RPAxis axis = 2 [json_name = "axis"];
-    {PROTOBUF_FIELD_OFFSET(RPScrollView, _impl_.axis_), _Internal::kHasBitsOffset + 1, 0, (0 | ::_fl::kFcOptional | ::_fl::kOpenEnum)},
+    {PROTOBUF_FIELD_OFFSET(RPScrollable, _impl_.axis_), _Internal::kHasBitsOffset + 1, 0, (0 | ::_fl::kFcOptional | ::_fl::kOpenEnum)},
     // bool shows_indicators = 3 [json_name = "showsIndicators"];
-    {PROTOBUF_FIELD_OFFSET(RPScrollView, _impl_.shows_indicators_), _Internal::kHasBitsOffset + 2, 0, (0 | ::_fl::kFcOptional | ::_fl::kBool)},
+    {PROTOBUF_FIELD_OFFSET(RPScrollable, _impl_.shows_indicators_), _Internal::kHasBitsOffset + 2, 0, (0 | ::_fl::kFcOptional | ::_fl::kBool)},
   }},
   {{
       {::_pbi::TcParser::GetTable<::proto::renderprotocol::ui::v1::RPWidget>()},
@@ -4968,8 +4968,8 @@ RPScrollView::_table_ = {
   {{
   }},
 };
-PROTOBUF_NOINLINE void RPScrollView::Clear() {
-// @@protoc_insertion_point(message_clear_start:proto.renderprotocol.ui.v1.RPScrollView)
+PROTOBUF_NOINLINE void RPScrollable::Clear() {
+// @@protoc_insertion_point(message_clear_start:proto.renderprotocol.ui.v1.RPScrollable)
   ::google::protobuf::internal::TSanWrite(&_impl_);
   ::uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
@@ -4990,20 +4990,20 @@ PROTOBUF_NOINLINE void RPScrollView::Clear() {
 }
 
 #if defined(PROTOBUF_CUSTOM_VTABLE)
-::uint8_t* PROTOBUF_NONNULL RPScrollView::_InternalSerialize(
+::uint8_t* PROTOBUF_NONNULL RPScrollable::_InternalSerialize(
     const ::google::protobuf::MessageLite& base, ::uint8_t* PROTOBUF_NONNULL target,
     ::google::protobuf::io::EpsCopyOutputStream* PROTOBUF_NONNULL stream) {
-  const RPScrollView& this_ = static_cast<const RPScrollView&>(base);
+  const RPScrollable& this_ = static_cast<const RPScrollable&>(base);
 #else   // PROTOBUF_CUSTOM_VTABLE
-::uint8_t* PROTOBUF_NONNULL RPScrollView::_InternalSerialize(
+::uint8_t* PROTOBUF_NONNULL RPScrollable::_InternalSerialize(
     ::uint8_t* PROTOBUF_NONNULL target,
     ::google::protobuf::io::EpsCopyOutputStream* PROTOBUF_NONNULL stream) const {
-  const RPScrollView& this_ = *this;
+  const RPScrollable& this_ = *this;
 #endif  // PROTOBUF_CUSTOM_VTABLE
   if constexpr (::_pbi::DebugHardenCheckHasBitConsistency()) {
     this_.CheckHasBitConsistency();
   }
-  // @@protoc_insertion_point(serialize_to_array_start:proto.renderprotocol.ui.v1.RPScrollView)
+  // @@protoc_insertion_point(serialize_to_array_start:proto.renderprotocol.ui.v1.RPScrollable)
   ::uint32_t cached_has_bits = 0;
   (void)cached_has_bits;
 
@@ -5038,18 +5038,18 @@ PROTOBUF_NOINLINE void RPScrollView::Clear() {
         ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
             this_._internal_metadata_.unknown_fields<::google::protobuf::UnknownFieldSet>(::google::protobuf::UnknownFieldSet::default_instance), target, stream);
   }
-  // @@protoc_insertion_point(serialize_to_array_end:proto.renderprotocol.ui.v1.RPScrollView)
+  // @@protoc_insertion_point(serialize_to_array_end:proto.renderprotocol.ui.v1.RPScrollable)
   return target;
 }
 
 #if defined(PROTOBUF_CUSTOM_VTABLE)
-::size_t RPScrollView::ByteSizeLong(const MessageLite& base) {
-  const RPScrollView& this_ = static_cast<const RPScrollView&>(base);
+::size_t RPScrollable::ByteSizeLong(const MessageLite& base) {
+  const RPScrollable& this_ = static_cast<const RPScrollable&>(base);
 #else   // PROTOBUF_CUSTOM_VTABLE
-::size_t RPScrollView::ByteSizeLong() const {
-  const RPScrollView& this_ = *this;
+::size_t RPScrollable::ByteSizeLong() const {
+  const RPScrollable& this_ = *this;
 #endif  // PROTOBUF_CUSTOM_VTABLE
-  // @@protoc_insertion_point(message_byte_size_start:proto.renderprotocol.ui.v1.RPScrollView)
+  // @@protoc_insertion_point(message_byte_size_start:proto.renderprotocol.ui.v1.RPScrollable)
   ::size_t total_size = 0;
 
   ::uint32_t cached_has_bits = 0;
@@ -5082,16 +5082,16 @@ PROTOBUF_NOINLINE void RPScrollView::Clear() {
                                              &this_._impl_._cached_size_);
 }
 
-void RPScrollView::MergeImpl(::google::protobuf::MessageLite& to_msg,
+void RPScrollable::MergeImpl(::google::protobuf::MessageLite& to_msg,
                             const ::google::protobuf::MessageLite& from_msg) {
    auto* const _this =
-      static_cast<RPScrollView*>(&to_msg);
-  auto& from = static_cast<const RPScrollView&>(from_msg);
+      static_cast<RPScrollable*>(&to_msg);
+  auto& from = static_cast<const RPScrollable&>(from_msg);
   if constexpr (::_pbi::DebugHardenCheckHasBitConsistency()) {
     from.CheckHasBitConsistency();
   }
   ::google::protobuf::Arena* arena = _this->GetArena();
-  // @@protoc_insertion_point(class_specific_merge_from_start:proto.renderprotocol.ui.v1.RPScrollView)
+  // @@protoc_insertion_point(class_specific_merge_from_start:proto.renderprotocol.ui.v1.RPScrollable)
   ABSL_DCHECK_NE(&from, _this);
   ::uint32_t cached_has_bits = 0;
   (void)cached_has_bits;
@@ -5122,27 +5122,27 @@ void RPScrollView::MergeImpl(::google::protobuf::MessageLite& to_msg,
       from._internal_metadata_);
 }
 
-void RPScrollView::CopyFrom(const RPScrollView& from) {
-  // @@protoc_insertion_point(class_specific_copy_from_start:proto.renderprotocol.ui.v1.RPScrollView)
+void RPScrollable::CopyFrom(const RPScrollable& from) {
+  // @@protoc_insertion_point(class_specific_copy_from_start:proto.renderprotocol.ui.v1.RPScrollable)
   if (&from == this) return;
   Clear();
   MergeFrom(from);
 }
 
 
-void RPScrollView::InternalSwap(RPScrollView* PROTOBUF_RESTRICT PROTOBUF_NONNULL other) {
+void RPScrollable::InternalSwap(RPScrollable* PROTOBUF_RESTRICT PROTOBUF_NONNULL other) {
   using ::std::swap;
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
   swap(_impl_._has_bits_[0], other->_impl_._has_bits_[0]);
   ::google::protobuf::internal::memswap<
-      PROTOBUF_FIELD_OFFSET(RPScrollView, _impl_.shows_indicators_)
-      + sizeof(RPScrollView::_impl_.shows_indicators_)
-      - PROTOBUF_FIELD_OFFSET(RPScrollView, _impl_.child_)>(
+      PROTOBUF_FIELD_OFFSET(RPScrollable, _impl_.shows_indicators_)
+      + sizeof(RPScrollable::_impl_.shows_indicators_)
+      - PROTOBUF_FIELD_OFFSET(RPScrollable, _impl_.child_)>(
           reinterpret_cast<char*>(&_impl_.child_),
           reinterpret_cast<char*>(&other->_impl_.child_));
 }
 
-::google::protobuf::Metadata RPScrollView::GetMetadata() const {
+::google::protobuf::Metadata RPScrollable::GetMetadata() const {
   return ::google::protobuf::Message::GetMetadataImpl(GetClassData()->full());
 }
 // ===================================================================
