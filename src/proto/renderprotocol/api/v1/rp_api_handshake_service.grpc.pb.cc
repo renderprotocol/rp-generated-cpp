@@ -27,6 +27,8 @@ namespace v1 {
 
 static const char* RPHandshakeService_method_names[] = {
   "/proto.renderprotocol.api.v1.RPHandshakeService/RPInitiate",
+  "/proto.renderprotocol.api.v1.RPHandshakeService/RPRefreshSession",
+  "/proto.renderprotocol.api.v1.RPHandshakeService/RPEndSession",
 };
 
 std::unique_ptr< RPHandshakeService::Stub> RPHandshakeService::NewStub(const std::shared_ptr< ::grpc::ChannelInterface>& channel, const ::grpc::StubOptions& options) {
@@ -37,6 +39,8 @@ std::unique_ptr< RPHandshakeService::Stub> RPHandshakeService::NewStub(const std
 
 RPHandshakeService::Stub::Stub(const std::shared_ptr< ::grpc::ChannelInterface>& channel, const ::grpc::StubOptions& options)
   : channel_(channel), rpcmethod_RPInitiate_(RPHandshakeService_method_names[0], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_RPRefreshSession_(RPHandshakeService_method_names[1], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_RPEndSession_(RPHandshakeService_method_names[2], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
   {}
 
 ::grpc::Status RPHandshakeService::Stub::RPInitiate(::grpc::ClientContext* context, const ::proto::renderprotocol::api::v1::RPInitiateRequest& request, ::proto::renderprotocol::api::v1::RPInitiateResponse* response) {
@@ -62,6 +66,52 @@ void RPHandshakeService::Stub::async::RPInitiate(::grpc::ClientContext* context,
   return result;
 }
 
+::grpc::Status RPHandshakeService::Stub::RPRefreshSession(::grpc::ClientContext* context, const ::proto::renderprotocol::api::v1::RPRefreshSessionRequest& request, ::proto::renderprotocol::api::v1::RPRefreshSessionResponse* response) {
+  return ::grpc::internal::BlockingUnaryCall< ::proto::renderprotocol::api::v1::RPRefreshSessionRequest, ::proto::renderprotocol::api::v1::RPRefreshSessionResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), rpcmethod_RPRefreshSession_, context, request, response);
+}
+
+void RPHandshakeService::Stub::async::RPRefreshSession(::grpc::ClientContext* context, const ::proto::renderprotocol::api::v1::RPRefreshSessionRequest* request, ::proto::renderprotocol::api::v1::RPRefreshSessionResponse* response, std::function<void(::grpc::Status)> f) {
+  ::grpc::internal::CallbackUnaryCall< ::proto::renderprotocol::api::v1::RPRefreshSessionRequest, ::proto::renderprotocol::api::v1::RPRefreshSessionResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_RPRefreshSession_, context, request, response, std::move(f));
+}
+
+void RPHandshakeService::Stub::async::RPRefreshSession(::grpc::ClientContext* context, const ::proto::renderprotocol::api::v1::RPRefreshSessionRequest* request, ::proto::renderprotocol::api::v1::RPRefreshSessionResponse* response, ::grpc::ClientUnaryReactor* reactor) {
+  ::grpc::internal::ClientCallbackUnaryFactory::Create< ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_RPRefreshSession_, context, request, response, reactor);
+}
+
+::grpc::ClientAsyncResponseReader< ::proto::renderprotocol::api::v1::RPRefreshSessionResponse>* RPHandshakeService::Stub::PrepareAsyncRPRefreshSessionRaw(::grpc::ClientContext* context, const ::proto::renderprotocol::api::v1::RPRefreshSessionRequest& request, ::grpc::CompletionQueue* cq) {
+  return ::grpc::internal::ClientAsyncResponseReaderHelper::Create< ::proto::renderprotocol::api::v1::RPRefreshSessionResponse, ::proto::renderprotocol::api::v1::RPRefreshSessionRequest, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), cq, rpcmethod_RPRefreshSession_, context, request);
+}
+
+::grpc::ClientAsyncResponseReader< ::proto::renderprotocol::api::v1::RPRefreshSessionResponse>* RPHandshakeService::Stub::AsyncRPRefreshSessionRaw(::grpc::ClientContext* context, const ::proto::renderprotocol::api::v1::RPRefreshSessionRequest& request, ::grpc::CompletionQueue* cq) {
+  auto* result =
+    this->PrepareAsyncRPRefreshSessionRaw(context, request, cq);
+  result->StartCall();
+  return result;
+}
+
+::grpc::Status RPHandshakeService::Stub::RPEndSession(::grpc::ClientContext* context, const ::proto::renderprotocol::api::v1::RPEndSessionRequest& request, ::proto::renderprotocol::api::v1::RPEndSessionResponse* response) {
+  return ::grpc::internal::BlockingUnaryCall< ::proto::renderprotocol::api::v1::RPEndSessionRequest, ::proto::renderprotocol::api::v1::RPEndSessionResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), rpcmethod_RPEndSession_, context, request, response);
+}
+
+void RPHandshakeService::Stub::async::RPEndSession(::grpc::ClientContext* context, const ::proto::renderprotocol::api::v1::RPEndSessionRequest* request, ::proto::renderprotocol::api::v1::RPEndSessionResponse* response, std::function<void(::grpc::Status)> f) {
+  ::grpc::internal::CallbackUnaryCall< ::proto::renderprotocol::api::v1::RPEndSessionRequest, ::proto::renderprotocol::api::v1::RPEndSessionResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_RPEndSession_, context, request, response, std::move(f));
+}
+
+void RPHandshakeService::Stub::async::RPEndSession(::grpc::ClientContext* context, const ::proto::renderprotocol::api::v1::RPEndSessionRequest* request, ::proto::renderprotocol::api::v1::RPEndSessionResponse* response, ::grpc::ClientUnaryReactor* reactor) {
+  ::grpc::internal::ClientCallbackUnaryFactory::Create< ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_RPEndSession_, context, request, response, reactor);
+}
+
+::grpc::ClientAsyncResponseReader< ::proto::renderprotocol::api::v1::RPEndSessionResponse>* RPHandshakeService::Stub::PrepareAsyncRPEndSessionRaw(::grpc::ClientContext* context, const ::proto::renderprotocol::api::v1::RPEndSessionRequest& request, ::grpc::CompletionQueue* cq) {
+  return ::grpc::internal::ClientAsyncResponseReaderHelper::Create< ::proto::renderprotocol::api::v1::RPEndSessionResponse, ::proto::renderprotocol::api::v1::RPEndSessionRequest, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), cq, rpcmethod_RPEndSession_, context, request);
+}
+
+::grpc::ClientAsyncResponseReader< ::proto::renderprotocol::api::v1::RPEndSessionResponse>* RPHandshakeService::Stub::AsyncRPEndSessionRaw(::grpc::ClientContext* context, const ::proto::renderprotocol::api::v1::RPEndSessionRequest& request, ::grpc::CompletionQueue* cq) {
+  auto* result =
+    this->PrepareAsyncRPEndSessionRaw(context, request, cq);
+  result->StartCall();
+  return result;
+}
+
 RPHandshakeService::Service::Service() {
   AddMethod(new ::grpc::internal::RpcServiceMethod(
       RPHandshakeService_method_names[0],
@@ -73,12 +123,46 @@ RPHandshakeService::Service::Service() {
              ::proto::renderprotocol::api::v1::RPInitiateResponse* resp) {
                return service->RPInitiate(ctx, req, resp);
              }, this)));
+  AddMethod(new ::grpc::internal::RpcServiceMethod(
+      RPHandshakeService_method_names[1],
+      ::grpc::internal::RpcMethod::NORMAL_RPC,
+      new ::grpc::internal::RpcMethodHandler< RPHandshakeService::Service, ::proto::renderprotocol::api::v1::RPRefreshSessionRequest, ::proto::renderprotocol::api::v1::RPRefreshSessionResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(
+          [](RPHandshakeService::Service* service,
+             ::grpc::ServerContext* ctx,
+             const ::proto::renderprotocol::api::v1::RPRefreshSessionRequest* req,
+             ::proto::renderprotocol::api::v1::RPRefreshSessionResponse* resp) {
+               return service->RPRefreshSession(ctx, req, resp);
+             }, this)));
+  AddMethod(new ::grpc::internal::RpcServiceMethod(
+      RPHandshakeService_method_names[2],
+      ::grpc::internal::RpcMethod::NORMAL_RPC,
+      new ::grpc::internal::RpcMethodHandler< RPHandshakeService::Service, ::proto::renderprotocol::api::v1::RPEndSessionRequest, ::proto::renderprotocol::api::v1::RPEndSessionResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(
+          [](RPHandshakeService::Service* service,
+             ::grpc::ServerContext* ctx,
+             const ::proto::renderprotocol::api::v1::RPEndSessionRequest* req,
+             ::proto::renderprotocol::api::v1::RPEndSessionResponse* resp) {
+               return service->RPEndSession(ctx, req, resp);
+             }, this)));
 }
 
 RPHandshakeService::Service::~Service() {
 }
 
 ::grpc::Status RPHandshakeService::Service::RPInitiate(::grpc::ServerContext* context, const ::proto::renderprotocol::api::v1::RPInitiateRequest* request, ::proto::renderprotocol::api::v1::RPInitiateResponse* response) {
+  (void) context;
+  (void) request;
+  (void) response;
+  return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+}
+
+::grpc::Status RPHandshakeService::Service::RPRefreshSession(::grpc::ServerContext* context, const ::proto::renderprotocol::api::v1::RPRefreshSessionRequest* request, ::proto::renderprotocol::api::v1::RPRefreshSessionResponse* response) {
+  (void) context;
+  (void) request;
+  (void) response;
+  return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+}
+
+::grpc::Status RPHandshakeService::Service::RPEndSession(::grpc::ServerContext* context, const ::proto::renderprotocol::api::v1::RPEndSessionRequest* request, ::proto::renderprotocol::api::v1::RPEndSessionResponse* response) {
   (void) context;
   (void) request;
   (void) response;

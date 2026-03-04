@@ -31,6 +31,10 @@ namespace renderprotocol {
 namespace api {
 namespace v1 {
 
+// ─────────────────────────────────────────────────────────
+// Service
+// ─────────────────────────────────────────────────────────
+//
 class RPRenderService final {
  public:
   static constexpr char const* service_full_name() {
@@ -46,11 +50,30 @@ class RPRenderService final {
     std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::proto::renderprotocol::api::v1::RPFetchRenderTreeResponse>> PrepareAsyncRPFetchRenderTree(::grpc::ClientContext* context, const ::proto::renderprotocol::api::v1::RPFetchRenderTreeRequest& request, ::grpc::CompletionQueue* cq) {
       return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::proto::renderprotocol::api::v1::RPFetchRenderTreeResponse>>(PrepareAsyncRPFetchRenderTreeRaw(context, request, cq));
     }
+    virtual ::grpc::Status RPFetchComponent(::grpc::ClientContext* context, const ::proto::renderprotocol::api::v1::RPFetchComponentRequest& request, ::proto::renderprotocol::api::v1::RPFetchComponentResponse* response) = 0;
+    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::proto::renderprotocol::api::v1::RPFetchComponentResponse>> AsyncRPFetchComponent(::grpc::ClientContext* context, const ::proto::renderprotocol::api::v1::RPFetchComponentRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::proto::renderprotocol::api::v1::RPFetchComponentResponse>>(AsyncRPFetchComponentRaw(context, request, cq));
+    }
+    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::proto::renderprotocol::api::v1::RPFetchComponentResponse>> PrepareAsyncRPFetchComponent(::grpc::ClientContext* context, const ::proto::renderprotocol::api::v1::RPFetchComponentRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::proto::renderprotocol::api::v1::RPFetchComponentResponse>>(PrepareAsyncRPFetchComponentRaw(context, request, cq));
+    }
+    std::unique_ptr< ::grpc::ClientReaderInterface< ::proto::renderprotocol::api::v1::RPSubscribeRenderTreeResponse>> RPSubscribeRenderTree(::grpc::ClientContext* context, const ::proto::renderprotocol::api::v1::RPSubscribeRenderTreeRequest& request) {
+      return std::unique_ptr< ::grpc::ClientReaderInterface< ::proto::renderprotocol::api::v1::RPSubscribeRenderTreeResponse>>(RPSubscribeRenderTreeRaw(context, request));
+    }
+    std::unique_ptr< ::grpc::ClientAsyncReaderInterface< ::proto::renderprotocol::api::v1::RPSubscribeRenderTreeResponse>> AsyncRPSubscribeRenderTree(::grpc::ClientContext* context, const ::proto::renderprotocol::api::v1::RPSubscribeRenderTreeRequest& request, ::grpc::CompletionQueue* cq, void* tag) {
+      return std::unique_ptr< ::grpc::ClientAsyncReaderInterface< ::proto::renderprotocol::api::v1::RPSubscribeRenderTreeResponse>>(AsyncRPSubscribeRenderTreeRaw(context, request, cq, tag));
+    }
+    std::unique_ptr< ::grpc::ClientAsyncReaderInterface< ::proto::renderprotocol::api::v1::RPSubscribeRenderTreeResponse>> PrepareAsyncRPSubscribeRenderTree(::grpc::ClientContext* context, const ::proto::renderprotocol::api::v1::RPSubscribeRenderTreeRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncReaderInterface< ::proto::renderprotocol::api::v1::RPSubscribeRenderTreeResponse>>(PrepareAsyncRPSubscribeRenderTreeRaw(context, request, cq));
+    }
     class async_interface {
      public:
       virtual ~async_interface() {}
       virtual void RPFetchRenderTree(::grpc::ClientContext* context, const ::proto::renderprotocol::api::v1::RPFetchRenderTreeRequest* request, ::proto::renderprotocol::api::v1::RPFetchRenderTreeResponse* response, std::function<void(::grpc::Status)>) = 0;
       virtual void RPFetchRenderTree(::grpc::ClientContext* context, const ::proto::renderprotocol::api::v1::RPFetchRenderTreeRequest* request, ::proto::renderprotocol::api::v1::RPFetchRenderTreeResponse* response, ::grpc::ClientUnaryReactor* reactor) = 0;
+      virtual void RPFetchComponent(::grpc::ClientContext* context, const ::proto::renderprotocol::api::v1::RPFetchComponentRequest* request, ::proto::renderprotocol::api::v1::RPFetchComponentResponse* response, std::function<void(::grpc::Status)>) = 0;
+      virtual void RPFetchComponent(::grpc::ClientContext* context, const ::proto::renderprotocol::api::v1::RPFetchComponentRequest* request, ::proto::renderprotocol::api::v1::RPFetchComponentResponse* response, ::grpc::ClientUnaryReactor* reactor) = 0;
+      virtual void RPSubscribeRenderTree(::grpc::ClientContext* context, const ::proto::renderprotocol::api::v1::RPSubscribeRenderTreeRequest* request, ::grpc::ClientReadReactor< ::proto::renderprotocol::api::v1::RPSubscribeRenderTreeResponse>* reactor) = 0;
     };
     typedef class async_interface experimental_async_interface;
     virtual class async_interface* async() { return nullptr; }
@@ -58,6 +81,11 @@ class RPRenderService final {
    private:
     virtual ::grpc::ClientAsyncResponseReaderInterface< ::proto::renderprotocol::api::v1::RPFetchRenderTreeResponse>* AsyncRPFetchRenderTreeRaw(::grpc::ClientContext* context, const ::proto::renderprotocol::api::v1::RPFetchRenderTreeRequest& request, ::grpc::CompletionQueue* cq) = 0;
     virtual ::grpc::ClientAsyncResponseReaderInterface< ::proto::renderprotocol::api::v1::RPFetchRenderTreeResponse>* PrepareAsyncRPFetchRenderTreeRaw(::grpc::ClientContext* context, const ::proto::renderprotocol::api::v1::RPFetchRenderTreeRequest& request, ::grpc::CompletionQueue* cq) = 0;
+    virtual ::grpc::ClientAsyncResponseReaderInterface< ::proto::renderprotocol::api::v1::RPFetchComponentResponse>* AsyncRPFetchComponentRaw(::grpc::ClientContext* context, const ::proto::renderprotocol::api::v1::RPFetchComponentRequest& request, ::grpc::CompletionQueue* cq) = 0;
+    virtual ::grpc::ClientAsyncResponseReaderInterface< ::proto::renderprotocol::api::v1::RPFetchComponentResponse>* PrepareAsyncRPFetchComponentRaw(::grpc::ClientContext* context, const ::proto::renderprotocol::api::v1::RPFetchComponentRequest& request, ::grpc::CompletionQueue* cq) = 0;
+    virtual ::grpc::ClientReaderInterface< ::proto::renderprotocol::api::v1::RPSubscribeRenderTreeResponse>* RPSubscribeRenderTreeRaw(::grpc::ClientContext* context, const ::proto::renderprotocol::api::v1::RPSubscribeRenderTreeRequest& request) = 0;
+    virtual ::grpc::ClientAsyncReaderInterface< ::proto::renderprotocol::api::v1::RPSubscribeRenderTreeResponse>* AsyncRPSubscribeRenderTreeRaw(::grpc::ClientContext* context, const ::proto::renderprotocol::api::v1::RPSubscribeRenderTreeRequest& request, ::grpc::CompletionQueue* cq, void* tag) = 0;
+    virtual ::grpc::ClientAsyncReaderInterface< ::proto::renderprotocol::api::v1::RPSubscribeRenderTreeResponse>* PrepareAsyncRPSubscribeRenderTreeRaw(::grpc::ClientContext* context, const ::proto::renderprotocol::api::v1::RPSubscribeRenderTreeRequest& request, ::grpc::CompletionQueue* cq) = 0;
   };
   class Stub final : public StubInterface {
    public:
@@ -69,11 +97,30 @@ class RPRenderService final {
     std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::proto::renderprotocol::api::v1::RPFetchRenderTreeResponse>> PrepareAsyncRPFetchRenderTree(::grpc::ClientContext* context, const ::proto::renderprotocol::api::v1::RPFetchRenderTreeRequest& request, ::grpc::CompletionQueue* cq) {
       return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::proto::renderprotocol::api::v1::RPFetchRenderTreeResponse>>(PrepareAsyncRPFetchRenderTreeRaw(context, request, cq));
     }
+    ::grpc::Status RPFetchComponent(::grpc::ClientContext* context, const ::proto::renderprotocol::api::v1::RPFetchComponentRequest& request, ::proto::renderprotocol::api::v1::RPFetchComponentResponse* response) override;
+    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::proto::renderprotocol::api::v1::RPFetchComponentResponse>> AsyncRPFetchComponent(::grpc::ClientContext* context, const ::proto::renderprotocol::api::v1::RPFetchComponentRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::proto::renderprotocol::api::v1::RPFetchComponentResponse>>(AsyncRPFetchComponentRaw(context, request, cq));
+    }
+    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::proto::renderprotocol::api::v1::RPFetchComponentResponse>> PrepareAsyncRPFetchComponent(::grpc::ClientContext* context, const ::proto::renderprotocol::api::v1::RPFetchComponentRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::proto::renderprotocol::api::v1::RPFetchComponentResponse>>(PrepareAsyncRPFetchComponentRaw(context, request, cq));
+    }
+    std::unique_ptr< ::grpc::ClientReader< ::proto::renderprotocol::api::v1::RPSubscribeRenderTreeResponse>> RPSubscribeRenderTree(::grpc::ClientContext* context, const ::proto::renderprotocol::api::v1::RPSubscribeRenderTreeRequest& request) {
+      return std::unique_ptr< ::grpc::ClientReader< ::proto::renderprotocol::api::v1::RPSubscribeRenderTreeResponse>>(RPSubscribeRenderTreeRaw(context, request));
+    }
+    std::unique_ptr< ::grpc::ClientAsyncReader< ::proto::renderprotocol::api::v1::RPSubscribeRenderTreeResponse>> AsyncRPSubscribeRenderTree(::grpc::ClientContext* context, const ::proto::renderprotocol::api::v1::RPSubscribeRenderTreeRequest& request, ::grpc::CompletionQueue* cq, void* tag) {
+      return std::unique_ptr< ::grpc::ClientAsyncReader< ::proto::renderprotocol::api::v1::RPSubscribeRenderTreeResponse>>(AsyncRPSubscribeRenderTreeRaw(context, request, cq, tag));
+    }
+    std::unique_ptr< ::grpc::ClientAsyncReader< ::proto::renderprotocol::api::v1::RPSubscribeRenderTreeResponse>> PrepareAsyncRPSubscribeRenderTree(::grpc::ClientContext* context, const ::proto::renderprotocol::api::v1::RPSubscribeRenderTreeRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncReader< ::proto::renderprotocol::api::v1::RPSubscribeRenderTreeResponse>>(PrepareAsyncRPSubscribeRenderTreeRaw(context, request, cq));
+    }
     class async final :
       public StubInterface::async_interface {
      public:
       void RPFetchRenderTree(::grpc::ClientContext* context, const ::proto::renderprotocol::api::v1::RPFetchRenderTreeRequest* request, ::proto::renderprotocol::api::v1::RPFetchRenderTreeResponse* response, std::function<void(::grpc::Status)>) override;
       void RPFetchRenderTree(::grpc::ClientContext* context, const ::proto::renderprotocol::api::v1::RPFetchRenderTreeRequest* request, ::proto::renderprotocol::api::v1::RPFetchRenderTreeResponse* response, ::grpc::ClientUnaryReactor* reactor) override;
+      void RPFetchComponent(::grpc::ClientContext* context, const ::proto::renderprotocol::api::v1::RPFetchComponentRequest* request, ::proto::renderprotocol::api::v1::RPFetchComponentResponse* response, std::function<void(::grpc::Status)>) override;
+      void RPFetchComponent(::grpc::ClientContext* context, const ::proto::renderprotocol::api::v1::RPFetchComponentRequest* request, ::proto::renderprotocol::api::v1::RPFetchComponentResponse* response, ::grpc::ClientUnaryReactor* reactor) override;
+      void RPSubscribeRenderTree(::grpc::ClientContext* context, const ::proto::renderprotocol::api::v1::RPSubscribeRenderTreeRequest* request, ::grpc::ClientReadReactor< ::proto::renderprotocol::api::v1::RPSubscribeRenderTreeResponse>* reactor) override;
      private:
       friend class Stub;
       explicit async(Stub* stub): stub_(stub) { }
@@ -87,7 +134,14 @@ class RPRenderService final {
     class async async_stub_{this};
     ::grpc::ClientAsyncResponseReader< ::proto::renderprotocol::api::v1::RPFetchRenderTreeResponse>* AsyncRPFetchRenderTreeRaw(::grpc::ClientContext* context, const ::proto::renderprotocol::api::v1::RPFetchRenderTreeRequest& request, ::grpc::CompletionQueue* cq) override;
     ::grpc::ClientAsyncResponseReader< ::proto::renderprotocol::api::v1::RPFetchRenderTreeResponse>* PrepareAsyncRPFetchRenderTreeRaw(::grpc::ClientContext* context, const ::proto::renderprotocol::api::v1::RPFetchRenderTreeRequest& request, ::grpc::CompletionQueue* cq) override;
+    ::grpc::ClientAsyncResponseReader< ::proto::renderprotocol::api::v1::RPFetchComponentResponse>* AsyncRPFetchComponentRaw(::grpc::ClientContext* context, const ::proto::renderprotocol::api::v1::RPFetchComponentRequest& request, ::grpc::CompletionQueue* cq) override;
+    ::grpc::ClientAsyncResponseReader< ::proto::renderprotocol::api::v1::RPFetchComponentResponse>* PrepareAsyncRPFetchComponentRaw(::grpc::ClientContext* context, const ::proto::renderprotocol::api::v1::RPFetchComponentRequest& request, ::grpc::CompletionQueue* cq) override;
+    ::grpc::ClientReader< ::proto::renderprotocol::api::v1::RPSubscribeRenderTreeResponse>* RPSubscribeRenderTreeRaw(::grpc::ClientContext* context, const ::proto::renderprotocol::api::v1::RPSubscribeRenderTreeRequest& request) override;
+    ::grpc::ClientAsyncReader< ::proto::renderprotocol::api::v1::RPSubscribeRenderTreeResponse>* AsyncRPSubscribeRenderTreeRaw(::grpc::ClientContext* context, const ::proto::renderprotocol::api::v1::RPSubscribeRenderTreeRequest& request, ::grpc::CompletionQueue* cq, void* tag) override;
+    ::grpc::ClientAsyncReader< ::proto::renderprotocol::api::v1::RPSubscribeRenderTreeResponse>* PrepareAsyncRPSubscribeRenderTreeRaw(::grpc::ClientContext* context, const ::proto::renderprotocol::api::v1::RPSubscribeRenderTreeRequest& request, ::grpc::CompletionQueue* cq) override;
     const ::grpc::internal::RpcMethod rpcmethod_RPFetchRenderTree_;
+    const ::grpc::internal::RpcMethod rpcmethod_RPFetchComponent_;
+    const ::grpc::internal::RpcMethod rpcmethod_RPSubscribeRenderTree_;
   };
   static std::unique_ptr<Stub> NewStub(const std::shared_ptr< ::grpc::ChannelInterface>& channel, const ::grpc::StubOptions& options = ::grpc::StubOptions());
 
@@ -96,6 +150,8 @@ class RPRenderService final {
     Service();
     virtual ~Service();
     virtual ::grpc::Status RPFetchRenderTree(::grpc::ServerContext* context, const ::proto::renderprotocol::api::v1::RPFetchRenderTreeRequest* request, ::proto::renderprotocol::api::v1::RPFetchRenderTreeResponse* response);
+    virtual ::grpc::Status RPFetchComponent(::grpc::ServerContext* context, const ::proto::renderprotocol::api::v1::RPFetchComponentRequest* request, ::proto::renderprotocol::api::v1::RPFetchComponentResponse* response);
+    virtual ::grpc::Status RPSubscribeRenderTree(::grpc::ServerContext* context, const ::proto::renderprotocol::api::v1::RPSubscribeRenderTreeRequest* request, ::grpc::ServerWriter< ::proto::renderprotocol::api::v1::RPSubscribeRenderTreeResponse>* writer);
   };
   template <class BaseClass>
   class WithAsyncMethod_RPFetchRenderTree : public BaseClass {
@@ -117,7 +173,47 @@ class RPRenderService final {
       ::grpc::Service::RequestAsyncUnary(0, context, request, response, new_call_cq, notification_cq, tag);
     }
   };
-  typedef WithAsyncMethod_RPFetchRenderTree<Service > AsyncService;
+  template <class BaseClass>
+  class WithAsyncMethod_RPFetchComponent : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithAsyncMethod_RPFetchComponent() {
+      ::grpc::Service::MarkMethodAsync(1);
+    }
+    ~WithAsyncMethod_RPFetchComponent() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status RPFetchComponent(::grpc::ServerContext* /*context*/, const ::proto::renderprotocol::api::v1::RPFetchComponentRequest* /*request*/, ::proto::renderprotocol::api::v1::RPFetchComponentResponse* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    void RequestRPFetchComponent(::grpc::ServerContext* context, ::proto::renderprotocol::api::v1::RPFetchComponentRequest* request, ::grpc::ServerAsyncResponseWriter< ::proto::renderprotocol::api::v1::RPFetchComponentResponse>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
+      ::grpc::Service::RequestAsyncUnary(1, context, request, response, new_call_cq, notification_cq, tag);
+    }
+  };
+  template <class BaseClass>
+  class WithAsyncMethod_RPSubscribeRenderTree : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithAsyncMethod_RPSubscribeRenderTree() {
+      ::grpc::Service::MarkMethodAsync(2);
+    }
+    ~WithAsyncMethod_RPSubscribeRenderTree() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status RPSubscribeRenderTree(::grpc::ServerContext* /*context*/, const ::proto::renderprotocol::api::v1::RPSubscribeRenderTreeRequest* /*request*/, ::grpc::ServerWriter< ::proto::renderprotocol::api::v1::RPSubscribeRenderTreeResponse>* /*writer*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    void RequestRPSubscribeRenderTree(::grpc::ServerContext* context, ::proto::renderprotocol::api::v1::RPSubscribeRenderTreeRequest* request, ::grpc::ServerAsyncWriter< ::proto::renderprotocol::api::v1::RPSubscribeRenderTreeResponse>* writer, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
+      ::grpc::Service::RequestAsyncServerStreaming(2, context, request, writer, new_call_cq, notification_cq, tag);
+    }
+  };
+  typedef WithAsyncMethod_RPFetchRenderTree<WithAsyncMethod_RPFetchComponent<WithAsyncMethod_RPSubscribeRenderTree<Service > > > AsyncService;
   template <class BaseClass>
   class WithCallbackMethod_RPFetchRenderTree : public BaseClass {
    private:
@@ -145,7 +241,56 @@ class RPRenderService final {
     virtual ::grpc::ServerUnaryReactor* RPFetchRenderTree(
       ::grpc::CallbackServerContext* /*context*/, const ::proto::renderprotocol::api::v1::RPFetchRenderTreeRequest* /*request*/, ::proto::renderprotocol::api::v1::RPFetchRenderTreeResponse* /*response*/)  { return nullptr; }
   };
-  typedef WithCallbackMethod_RPFetchRenderTree<Service > CallbackService;
+  template <class BaseClass>
+  class WithCallbackMethod_RPFetchComponent : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithCallbackMethod_RPFetchComponent() {
+      ::grpc::Service::MarkMethodCallback(1,
+          new ::grpc::internal::CallbackUnaryHandler< ::proto::renderprotocol::api::v1::RPFetchComponentRequest, ::proto::renderprotocol::api::v1::RPFetchComponentResponse>(
+            [this](
+                   ::grpc::CallbackServerContext* context, const ::proto::renderprotocol::api::v1::RPFetchComponentRequest* request, ::proto::renderprotocol::api::v1::RPFetchComponentResponse* response) { return this->RPFetchComponent(context, request, response); }));}
+    void SetMessageAllocatorFor_RPFetchComponent(
+        ::grpc::MessageAllocator< ::proto::renderprotocol::api::v1::RPFetchComponentRequest, ::proto::renderprotocol::api::v1::RPFetchComponentResponse>* allocator) {
+      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::GetHandler(1);
+      static_cast<::grpc::internal::CallbackUnaryHandler< ::proto::renderprotocol::api::v1::RPFetchComponentRequest, ::proto::renderprotocol::api::v1::RPFetchComponentResponse>*>(handler)
+              ->SetMessageAllocator(allocator);
+    }
+    ~WithCallbackMethod_RPFetchComponent() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status RPFetchComponent(::grpc::ServerContext* /*context*/, const ::proto::renderprotocol::api::v1::RPFetchComponentRequest* /*request*/, ::proto::renderprotocol::api::v1::RPFetchComponentResponse* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    virtual ::grpc::ServerUnaryReactor* RPFetchComponent(
+      ::grpc::CallbackServerContext* /*context*/, const ::proto::renderprotocol::api::v1::RPFetchComponentRequest* /*request*/, ::proto::renderprotocol::api::v1::RPFetchComponentResponse* /*response*/)  { return nullptr; }
+  };
+  template <class BaseClass>
+  class WithCallbackMethod_RPSubscribeRenderTree : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithCallbackMethod_RPSubscribeRenderTree() {
+      ::grpc::Service::MarkMethodCallback(2,
+          new ::grpc::internal::CallbackServerStreamingHandler< ::proto::renderprotocol::api::v1::RPSubscribeRenderTreeRequest, ::proto::renderprotocol::api::v1::RPSubscribeRenderTreeResponse>(
+            [this](
+                   ::grpc::CallbackServerContext* context, const ::proto::renderprotocol::api::v1::RPSubscribeRenderTreeRequest* request) { return this->RPSubscribeRenderTree(context, request); }));
+    }
+    ~WithCallbackMethod_RPSubscribeRenderTree() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status RPSubscribeRenderTree(::grpc::ServerContext* /*context*/, const ::proto::renderprotocol::api::v1::RPSubscribeRenderTreeRequest* /*request*/, ::grpc::ServerWriter< ::proto::renderprotocol::api::v1::RPSubscribeRenderTreeResponse>* /*writer*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    virtual ::grpc::ServerWriteReactor< ::proto::renderprotocol::api::v1::RPSubscribeRenderTreeResponse>* RPSubscribeRenderTree(
+      ::grpc::CallbackServerContext* /*context*/, const ::proto::renderprotocol::api::v1::RPSubscribeRenderTreeRequest* /*request*/)  { return nullptr; }
+  };
+  typedef WithCallbackMethod_RPFetchRenderTree<WithCallbackMethod_RPFetchComponent<WithCallbackMethod_RPSubscribeRenderTree<Service > > > CallbackService;
   typedef CallbackService ExperimentalCallbackService;
   template <class BaseClass>
   class WithGenericMethod_RPFetchRenderTree : public BaseClass {
@@ -160,6 +305,40 @@ class RPRenderService final {
     }
     // disable synchronous version of this method
     ::grpc::Status RPFetchRenderTree(::grpc::ServerContext* /*context*/, const ::proto::renderprotocol::api::v1::RPFetchRenderTreeRequest* /*request*/, ::proto::renderprotocol::api::v1::RPFetchRenderTreeResponse* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+  };
+  template <class BaseClass>
+  class WithGenericMethod_RPFetchComponent : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithGenericMethod_RPFetchComponent() {
+      ::grpc::Service::MarkMethodGeneric(1);
+    }
+    ~WithGenericMethod_RPFetchComponent() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status RPFetchComponent(::grpc::ServerContext* /*context*/, const ::proto::renderprotocol::api::v1::RPFetchComponentRequest* /*request*/, ::proto::renderprotocol::api::v1::RPFetchComponentResponse* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+  };
+  template <class BaseClass>
+  class WithGenericMethod_RPSubscribeRenderTree : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithGenericMethod_RPSubscribeRenderTree() {
+      ::grpc::Service::MarkMethodGeneric(2);
+    }
+    ~WithGenericMethod_RPSubscribeRenderTree() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status RPSubscribeRenderTree(::grpc::ServerContext* /*context*/, const ::proto::renderprotocol::api::v1::RPSubscribeRenderTreeRequest* /*request*/, ::grpc::ServerWriter< ::proto::renderprotocol::api::v1::RPSubscribeRenderTreeResponse>* /*writer*/) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
@@ -185,6 +364,46 @@ class RPRenderService final {
     }
   };
   template <class BaseClass>
+  class WithRawMethod_RPFetchComponent : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithRawMethod_RPFetchComponent() {
+      ::grpc::Service::MarkMethodRaw(1);
+    }
+    ~WithRawMethod_RPFetchComponent() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status RPFetchComponent(::grpc::ServerContext* /*context*/, const ::proto::renderprotocol::api::v1::RPFetchComponentRequest* /*request*/, ::proto::renderprotocol::api::v1::RPFetchComponentResponse* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    void RequestRPFetchComponent(::grpc::ServerContext* context, ::grpc::ByteBuffer* request, ::grpc::ServerAsyncResponseWriter< ::grpc::ByteBuffer>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
+      ::grpc::Service::RequestAsyncUnary(1, context, request, response, new_call_cq, notification_cq, tag);
+    }
+  };
+  template <class BaseClass>
+  class WithRawMethod_RPSubscribeRenderTree : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithRawMethod_RPSubscribeRenderTree() {
+      ::grpc::Service::MarkMethodRaw(2);
+    }
+    ~WithRawMethod_RPSubscribeRenderTree() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status RPSubscribeRenderTree(::grpc::ServerContext* /*context*/, const ::proto::renderprotocol::api::v1::RPSubscribeRenderTreeRequest* /*request*/, ::grpc::ServerWriter< ::proto::renderprotocol::api::v1::RPSubscribeRenderTreeResponse>* /*writer*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    void RequestRPSubscribeRenderTree(::grpc::ServerContext* context, ::grpc::ByteBuffer* request, ::grpc::ServerAsyncWriter< ::grpc::ByteBuffer>* writer, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
+      ::grpc::Service::RequestAsyncServerStreaming(2, context, request, writer, new_call_cq, notification_cq, tag);
+    }
+  };
+  template <class BaseClass>
   class WithRawCallbackMethod_RPFetchRenderTree : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
@@ -205,6 +424,50 @@ class RPRenderService final {
     }
     virtual ::grpc::ServerUnaryReactor* RPFetchRenderTree(
       ::grpc::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)  { return nullptr; }
+  };
+  template <class BaseClass>
+  class WithRawCallbackMethod_RPFetchComponent : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithRawCallbackMethod_RPFetchComponent() {
+      ::grpc::Service::MarkMethodRawCallback(1,
+          new ::grpc::internal::CallbackUnaryHandler< ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
+            [this](
+                   ::grpc::CallbackServerContext* context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->RPFetchComponent(context, request, response); }));
+    }
+    ~WithRawCallbackMethod_RPFetchComponent() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status RPFetchComponent(::grpc::ServerContext* /*context*/, const ::proto::renderprotocol::api::v1::RPFetchComponentRequest* /*request*/, ::proto::renderprotocol::api::v1::RPFetchComponentResponse* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    virtual ::grpc::ServerUnaryReactor* RPFetchComponent(
+      ::grpc::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)  { return nullptr; }
+  };
+  template <class BaseClass>
+  class WithRawCallbackMethod_RPSubscribeRenderTree : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithRawCallbackMethod_RPSubscribeRenderTree() {
+      ::grpc::Service::MarkMethodRawCallback(2,
+          new ::grpc::internal::CallbackServerStreamingHandler< ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
+            [this](
+                   ::grpc::CallbackServerContext* context, const::grpc::ByteBuffer* request) { return this->RPSubscribeRenderTree(context, request); }));
+    }
+    ~WithRawCallbackMethod_RPSubscribeRenderTree() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status RPSubscribeRenderTree(::grpc::ServerContext* /*context*/, const ::proto::renderprotocol::api::v1::RPSubscribeRenderTreeRequest* /*request*/, ::grpc::ServerWriter< ::proto::renderprotocol::api::v1::RPSubscribeRenderTreeResponse>* /*writer*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    virtual ::grpc::ServerWriteReactor< ::grpc::ByteBuffer>* RPSubscribeRenderTree(
+      ::grpc::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/)  { return nullptr; }
   };
   template <class BaseClass>
   class WithStreamedUnaryMethod_RPFetchRenderTree : public BaseClass {
@@ -233,9 +496,63 @@ class RPRenderService final {
     // replace default version of method with streamed unary
     virtual ::grpc::Status StreamedRPFetchRenderTree(::grpc::ServerContext* context, ::grpc::ServerUnaryStreamer< ::proto::renderprotocol::api::v1::RPFetchRenderTreeRequest,::proto::renderprotocol::api::v1::RPFetchRenderTreeResponse>* server_unary_streamer) = 0;
   };
-  typedef WithStreamedUnaryMethod_RPFetchRenderTree<Service > StreamedUnaryService;
-  typedef Service SplitStreamedService;
-  typedef WithStreamedUnaryMethod_RPFetchRenderTree<Service > StreamedService;
+  template <class BaseClass>
+  class WithStreamedUnaryMethod_RPFetchComponent : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithStreamedUnaryMethod_RPFetchComponent() {
+      ::grpc::Service::MarkMethodStreamed(1,
+        new ::grpc::internal::StreamedUnaryHandler<
+          ::proto::renderprotocol::api::v1::RPFetchComponentRequest, ::proto::renderprotocol::api::v1::RPFetchComponentResponse>(
+            [this](::grpc::ServerContext* context,
+                   ::grpc::ServerUnaryStreamer<
+                     ::proto::renderprotocol::api::v1::RPFetchComponentRequest, ::proto::renderprotocol::api::v1::RPFetchComponentResponse>* streamer) {
+                       return this->StreamedRPFetchComponent(context,
+                         streamer);
+                  }));
+    }
+    ~WithStreamedUnaryMethod_RPFetchComponent() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable regular version of this method
+    ::grpc::Status RPFetchComponent(::grpc::ServerContext* /*context*/, const ::proto::renderprotocol::api::v1::RPFetchComponentRequest* /*request*/, ::proto::renderprotocol::api::v1::RPFetchComponentResponse* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    // replace default version of method with streamed unary
+    virtual ::grpc::Status StreamedRPFetchComponent(::grpc::ServerContext* context, ::grpc::ServerUnaryStreamer< ::proto::renderprotocol::api::v1::RPFetchComponentRequest,::proto::renderprotocol::api::v1::RPFetchComponentResponse>* server_unary_streamer) = 0;
+  };
+  typedef WithStreamedUnaryMethod_RPFetchRenderTree<WithStreamedUnaryMethod_RPFetchComponent<Service > > StreamedUnaryService;
+  template <class BaseClass>
+  class WithSplitStreamingMethod_RPSubscribeRenderTree : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithSplitStreamingMethod_RPSubscribeRenderTree() {
+      ::grpc::Service::MarkMethodStreamed(2,
+        new ::grpc::internal::SplitServerStreamingHandler<
+          ::proto::renderprotocol::api::v1::RPSubscribeRenderTreeRequest, ::proto::renderprotocol::api::v1::RPSubscribeRenderTreeResponse>(
+            [this](::grpc::ServerContext* context,
+                   ::grpc::ServerSplitStreamer<
+                     ::proto::renderprotocol::api::v1::RPSubscribeRenderTreeRequest, ::proto::renderprotocol::api::v1::RPSubscribeRenderTreeResponse>* streamer) {
+                       return this->StreamedRPSubscribeRenderTree(context,
+                         streamer);
+                  }));
+    }
+    ~WithSplitStreamingMethod_RPSubscribeRenderTree() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable regular version of this method
+    ::grpc::Status RPSubscribeRenderTree(::grpc::ServerContext* /*context*/, const ::proto::renderprotocol::api::v1::RPSubscribeRenderTreeRequest* /*request*/, ::grpc::ServerWriter< ::proto::renderprotocol::api::v1::RPSubscribeRenderTreeResponse>* /*writer*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    // replace default version of method with split streamed
+    virtual ::grpc::Status StreamedRPSubscribeRenderTree(::grpc::ServerContext* context, ::grpc::ServerSplitStreamer< ::proto::renderprotocol::api::v1::RPSubscribeRenderTreeRequest,::proto::renderprotocol::api::v1::RPSubscribeRenderTreeResponse>* server_split_streamer) = 0;
+  };
+  typedef WithSplitStreamingMethod_RPSubscribeRenderTree<Service > SplitStreamedService;
+  typedef WithStreamedUnaryMethod_RPFetchRenderTree<WithStreamedUnaryMethod_RPFetchComponent<WithSplitStreamingMethod_RPSubscribeRenderTree<Service > > > StreamedService;
 };
 
 }  // namespace v1

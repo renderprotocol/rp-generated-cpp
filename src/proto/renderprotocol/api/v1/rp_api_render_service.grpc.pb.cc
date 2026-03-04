@@ -27,6 +27,8 @@ namespace v1 {
 
 static const char* RPRenderService_method_names[] = {
   "/proto.renderprotocol.api.v1.RPRenderService/RPFetchRenderTree",
+  "/proto.renderprotocol.api.v1.RPRenderService/RPFetchComponent",
+  "/proto.renderprotocol.api.v1.RPRenderService/RPSubscribeRenderTree",
 };
 
 std::unique_ptr< RPRenderService::Stub> RPRenderService::NewStub(const std::shared_ptr< ::grpc::ChannelInterface>& channel, const ::grpc::StubOptions& options) {
@@ -37,6 +39,8 @@ std::unique_ptr< RPRenderService::Stub> RPRenderService::NewStub(const std::shar
 
 RPRenderService::Stub::Stub(const std::shared_ptr< ::grpc::ChannelInterface>& channel, const ::grpc::StubOptions& options)
   : channel_(channel), rpcmethod_RPFetchRenderTree_(RPRenderService_method_names[0], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_RPFetchComponent_(RPRenderService_method_names[1], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_RPSubscribeRenderTree_(RPRenderService_method_names[2], options.suffix_for_stats(),::grpc::internal::RpcMethod::SERVER_STREAMING, channel)
   {}
 
 ::grpc::Status RPRenderService::Stub::RPFetchRenderTree(::grpc::ClientContext* context, const ::proto::renderprotocol::api::v1::RPFetchRenderTreeRequest& request, ::proto::renderprotocol::api::v1::RPFetchRenderTreeResponse* response) {
@@ -62,6 +66,45 @@ void RPRenderService::Stub::async::RPFetchRenderTree(::grpc::ClientContext* cont
   return result;
 }
 
+::grpc::Status RPRenderService::Stub::RPFetchComponent(::grpc::ClientContext* context, const ::proto::renderprotocol::api::v1::RPFetchComponentRequest& request, ::proto::renderprotocol::api::v1::RPFetchComponentResponse* response) {
+  return ::grpc::internal::BlockingUnaryCall< ::proto::renderprotocol::api::v1::RPFetchComponentRequest, ::proto::renderprotocol::api::v1::RPFetchComponentResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), rpcmethod_RPFetchComponent_, context, request, response);
+}
+
+void RPRenderService::Stub::async::RPFetchComponent(::grpc::ClientContext* context, const ::proto::renderprotocol::api::v1::RPFetchComponentRequest* request, ::proto::renderprotocol::api::v1::RPFetchComponentResponse* response, std::function<void(::grpc::Status)> f) {
+  ::grpc::internal::CallbackUnaryCall< ::proto::renderprotocol::api::v1::RPFetchComponentRequest, ::proto::renderprotocol::api::v1::RPFetchComponentResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_RPFetchComponent_, context, request, response, std::move(f));
+}
+
+void RPRenderService::Stub::async::RPFetchComponent(::grpc::ClientContext* context, const ::proto::renderprotocol::api::v1::RPFetchComponentRequest* request, ::proto::renderprotocol::api::v1::RPFetchComponentResponse* response, ::grpc::ClientUnaryReactor* reactor) {
+  ::grpc::internal::ClientCallbackUnaryFactory::Create< ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_RPFetchComponent_, context, request, response, reactor);
+}
+
+::grpc::ClientAsyncResponseReader< ::proto::renderprotocol::api::v1::RPFetchComponentResponse>* RPRenderService::Stub::PrepareAsyncRPFetchComponentRaw(::grpc::ClientContext* context, const ::proto::renderprotocol::api::v1::RPFetchComponentRequest& request, ::grpc::CompletionQueue* cq) {
+  return ::grpc::internal::ClientAsyncResponseReaderHelper::Create< ::proto::renderprotocol::api::v1::RPFetchComponentResponse, ::proto::renderprotocol::api::v1::RPFetchComponentRequest, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), cq, rpcmethod_RPFetchComponent_, context, request);
+}
+
+::grpc::ClientAsyncResponseReader< ::proto::renderprotocol::api::v1::RPFetchComponentResponse>* RPRenderService::Stub::AsyncRPFetchComponentRaw(::grpc::ClientContext* context, const ::proto::renderprotocol::api::v1::RPFetchComponentRequest& request, ::grpc::CompletionQueue* cq) {
+  auto* result =
+    this->PrepareAsyncRPFetchComponentRaw(context, request, cq);
+  result->StartCall();
+  return result;
+}
+
+::grpc::ClientReader< ::proto::renderprotocol::api::v1::RPSubscribeRenderTreeResponse>* RPRenderService::Stub::RPSubscribeRenderTreeRaw(::grpc::ClientContext* context, const ::proto::renderprotocol::api::v1::RPSubscribeRenderTreeRequest& request) {
+  return ::grpc::internal::ClientReaderFactory< ::proto::renderprotocol::api::v1::RPSubscribeRenderTreeResponse>::Create(channel_.get(), rpcmethod_RPSubscribeRenderTree_, context, request);
+}
+
+void RPRenderService::Stub::async::RPSubscribeRenderTree(::grpc::ClientContext* context, const ::proto::renderprotocol::api::v1::RPSubscribeRenderTreeRequest* request, ::grpc::ClientReadReactor< ::proto::renderprotocol::api::v1::RPSubscribeRenderTreeResponse>* reactor) {
+  ::grpc::internal::ClientCallbackReaderFactory< ::proto::renderprotocol::api::v1::RPSubscribeRenderTreeResponse>::Create(stub_->channel_.get(), stub_->rpcmethod_RPSubscribeRenderTree_, context, request, reactor);
+}
+
+::grpc::ClientAsyncReader< ::proto::renderprotocol::api::v1::RPSubscribeRenderTreeResponse>* RPRenderService::Stub::AsyncRPSubscribeRenderTreeRaw(::grpc::ClientContext* context, const ::proto::renderprotocol::api::v1::RPSubscribeRenderTreeRequest& request, ::grpc::CompletionQueue* cq, void* tag) {
+  return ::grpc::internal::ClientAsyncReaderFactory< ::proto::renderprotocol::api::v1::RPSubscribeRenderTreeResponse>::Create(channel_.get(), cq, rpcmethod_RPSubscribeRenderTree_, context, request, true, tag);
+}
+
+::grpc::ClientAsyncReader< ::proto::renderprotocol::api::v1::RPSubscribeRenderTreeResponse>* RPRenderService::Stub::PrepareAsyncRPSubscribeRenderTreeRaw(::grpc::ClientContext* context, const ::proto::renderprotocol::api::v1::RPSubscribeRenderTreeRequest& request, ::grpc::CompletionQueue* cq) {
+  return ::grpc::internal::ClientAsyncReaderFactory< ::proto::renderprotocol::api::v1::RPSubscribeRenderTreeResponse>::Create(channel_.get(), cq, rpcmethod_RPSubscribeRenderTree_, context, request, false, nullptr);
+}
+
 RPRenderService::Service::Service() {
   AddMethod(new ::grpc::internal::RpcServiceMethod(
       RPRenderService_method_names[0],
@@ -73,6 +116,26 @@ RPRenderService::Service::Service() {
              ::proto::renderprotocol::api::v1::RPFetchRenderTreeResponse* resp) {
                return service->RPFetchRenderTree(ctx, req, resp);
              }, this)));
+  AddMethod(new ::grpc::internal::RpcServiceMethod(
+      RPRenderService_method_names[1],
+      ::grpc::internal::RpcMethod::NORMAL_RPC,
+      new ::grpc::internal::RpcMethodHandler< RPRenderService::Service, ::proto::renderprotocol::api::v1::RPFetchComponentRequest, ::proto::renderprotocol::api::v1::RPFetchComponentResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(
+          [](RPRenderService::Service* service,
+             ::grpc::ServerContext* ctx,
+             const ::proto::renderprotocol::api::v1::RPFetchComponentRequest* req,
+             ::proto::renderprotocol::api::v1::RPFetchComponentResponse* resp) {
+               return service->RPFetchComponent(ctx, req, resp);
+             }, this)));
+  AddMethod(new ::grpc::internal::RpcServiceMethod(
+      RPRenderService_method_names[2],
+      ::grpc::internal::RpcMethod::SERVER_STREAMING,
+      new ::grpc::internal::ServerStreamingHandler< RPRenderService::Service, ::proto::renderprotocol::api::v1::RPSubscribeRenderTreeRequest, ::proto::renderprotocol::api::v1::RPSubscribeRenderTreeResponse>(
+          [](RPRenderService::Service* service,
+             ::grpc::ServerContext* ctx,
+             const ::proto::renderprotocol::api::v1::RPSubscribeRenderTreeRequest* req,
+             ::grpc::ServerWriter<::proto::renderprotocol::api::v1::RPSubscribeRenderTreeResponse>* writer) {
+               return service->RPSubscribeRenderTree(ctx, req, writer);
+             }, this)));
 }
 
 RPRenderService::Service::~Service() {
@@ -82,6 +145,20 @@ RPRenderService::Service::~Service() {
   (void) context;
   (void) request;
   (void) response;
+  return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+}
+
+::grpc::Status RPRenderService::Service::RPFetchComponent(::grpc::ServerContext* context, const ::proto::renderprotocol::api::v1::RPFetchComponentRequest* request, ::proto::renderprotocol::api::v1::RPFetchComponentResponse* response) {
+  (void) context;
+  (void) request;
+  (void) response;
+  return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+}
+
+::grpc::Status RPRenderService::Service::RPSubscribeRenderTree(::grpc::ServerContext* context, const ::proto::renderprotocol::api::v1::RPSubscribeRenderTreeRequest* request, ::grpc::ServerWriter< ::proto::renderprotocol::api::v1::RPSubscribeRenderTreeResponse>* writer) {
+  (void) context;
+  (void) request;
+  (void) writer;
   return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
 }
 

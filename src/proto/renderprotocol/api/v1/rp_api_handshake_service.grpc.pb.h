@@ -31,6 +31,10 @@ namespace renderprotocol {
 namespace api {
 namespace v1 {
 
+// ─────────────────────────────────────────────────────────
+// Service
+// ─────────────────────────────────────────────────────────
+//
 class RPHandshakeService final {
  public:
   static constexpr char const* service_full_name() {
@@ -46,11 +50,29 @@ class RPHandshakeService final {
     std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::proto::renderprotocol::api::v1::RPInitiateResponse>> PrepareAsyncRPInitiate(::grpc::ClientContext* context, const ::proto::renderprotocol::api::v1::RPInitiateRequest& request, ::grpc::CompletionQueue* cq) {
       return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::proto::renderprotocol::api::v1::RPInitiateResponse>>(PrepareAsyncRPInitiateRaw(context, request, cq));
     }
+    virtual ::grpc::Status RPRefreshSession(::grpc::ClientContext* context, const ::proto::renderprotocol::api::v1::RPRefreshSessionRequest& request, ::proto::renderprotocol::api::v1::RPRefreshSessionResponse* response) = 0;
+    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::proto::renderprotocol::api::v1::RPRefreshSessionResponse>> AsyncRPRefreshSession(::grpc::ClientContext* context, const ::proto::renderprotocol::api::v1::RPRefreshSessionRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::proto::renderprotocol::api::v1::RPRefreshSessionResponse>>(AsyncRPRefreshSessionRaw(context, request, cq));
+    }
+    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::proto::renderprotocol::api::v1::RPRefreshSessionResponse>> PrepareAsyncRPRefreshSession(::grpc::ClientContext* context, const ::proto::renderprotocol::api::v1::RPRefreshSessionRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::proto::renderprotocol::api::v1::RPRefreshSessionResponse>>(PrepareAsyncRPRefreshSessionRaw(context, request, cq));
+    }
+    virtual ::grpc::Status RPEndSession(::grpc::ClientContext* context, const ::proto::renderprotocol::api::v1::RPEndSessionRequest& request, ::proto::renderprotocol::api::v1::RPEndSessionResponse* response) = 0;
+    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::proto::renderprotocol::api::v1::RPEndSessionResponse>> AsyncRPEndSession(::grpc::ClientContext* context, const ::proto::renderprotocol::api::v1::RPEndSessionRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::proto::renderprotocol::api::v1::RPEndSessionResponse>>(AsyncRPEndSessionRaw(context, request, cq));
+    }
+    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::proto::renderprotocol::api::v1::RPEndSessionResponse>> PrepareAsyncRPEndSession(::grpc::ClientContext* context, const ::proto::renderprotocol::api::v1::RPEndSessionRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::proto::renderprotocol::api::v1::RPEndSessionResponse>>(PrepareAsyncRPEndSessionRaw(context, request, cq));
+    }
     class async_interface {
      public:
       virtual ~async_interface() {}
       virtual void RPInitiate(::grpc::ClientContext* context, const ::proto::renderprotocol::api::v1::RPInitiateRequest* request, ::proto::renderprotocol::api::v1::RPInitiateResponse* response, std::function<void(::grpc::Status)>) = 0;
       virtual void RPInitiate(::grpc::ClientContext* context, const ::proto::renderprotocol::api::v1::RPInitiateRequest* request, ::proto::renderprotocol::api::v1::RPInitiateResponse* response, ::grpc::ClientUnaryReactor* reactor) = 0;
+      virtual void RPRefreshSession(::grpc::ClientContext* context, const ::proto::renderprotocol::api::v1::RPRefreshSessionRequest* request, ::proto::renderprotocol::api::v1::RPRefreshSessionResponse* response, std::function<void(::grpc::Status)>) = 0;
+      virtual void RPRefreshSession(::grpc::ClientContext* context, const ::proto::renderprotocol::api::v1::RPRefreshSessionRequest* request, ::proto::renderprotocol::api::v1::RPRefreshSessionResponse* response, ::grpc::ClientUnaryReactor* reactor) = 0;
+      virtual void RPEndSession(::grpc::ClientContext* context, const ::proto::renderprotocol::api::v1::RPEndSessionRequest* request, ::proto::renderprotocol::api::v1::RPEndSessionResponse* response, std::function<void(::grpc::Status)>) = 0;
+      virtual void RPEndSession(::grpc::ClientContext* context, const ::proto::renderprotocol::api::v1::RPEndSessionRequest* request, ::proto::renderprotocol::api::v1::RPEndSessionResponse* response, ::grpc::ClientUnaryReactor* reactor) = 0;
     };
     typedef class async_interface experimental_async_interface;
     virtual class async_interface* async() { return nullptr; }
@@ -58,6 +80,10 @@ class RPHandshakeService final {
    private:
     virtual ::grpc::ClientAsyncResponseReaderInterface< ::proto::renderprotocol::api::v1::RPInitiateResponse>* AsyncRPInitiateRaw(::grpc::ClientContext* context, const ::proto::renderprotocol::api::v1::RPInitiateRequest& request, ::grpc::CompletionQueue* cq) = 0;
     virtual ::grpc::ClientAsyncResponseReaderInterface< ::proto::renderprotocol::api::v1::RPInitiateResponse>* PrepareAsyncRPInitiateRaw(::grpc::ClientContext* context, const ::proto::renderprotocol::api::v1::RPInitiateRequest& request, ::grpc::CompletionQueue* cq) = 0;
+    virtual ::grpc::ClientAsyncResponseReaderInterface< ::proto::renderprotocol::api::v1::RPRefreshSessionResponse>* AsyncRPRefreshSessionRaw(::grpc::ClientContext* context, const ::proto::renderprotocol::api::v1::RPRefreshSessionRequest& request, ::grpc::CompletionQueue* cq) = 0;
+    virtual ::grpc::ClientAsyncResponseReaderInterface< ::proto::renderprotocol::api::v1::RPRefreshSessionResponse>* PrepareAsyncRPRefreshSessionRaw(::grpc::ClientContext* context, const ::proto::renderprotocol::api::v1::RPRefreshSessionRequest& request, ::grpc::CompletionQueue* cq) = 0;
+    virtual ::grpc::ClientAsyncResponseReaderInterface< ::proto::renderprotocol::api::v1::RPEndSessionResponse>* AsyncRPEndSessionRaw(::grpc::ClientContext* context, const ::proto::renderprotocol::api::v1::RPEndSessionRequest& request, ::grpc::CompletionQueue* cq) = 0;
+    virtual ::grpc::ClientAsyncResponseReaderInterface< ::proto::renderprotocol::api::v1::RPEndSessionResponse>* PrepareAsyncRPEndSessionRaw(::grpc::ClientContext* context, const ::proto::renderprotocol::api::v1::RPEndSessionRequest& request, ::grpc::CompletionQueue* cq) = 0;
   };
   class Stub final : public StubInterface {
    public:
@@ -69,11 +95,29 @@ class RPHandshakeService final {
     std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::proto::renderprotocol::api::v1::RPInitiateResponse>> PrepareAsyncRPInitiate(::grpc::ClientContext* context, const ::proto::renderprotocol::api::v1::RPInitiateRequest& request, ::grpc::CompletionQueue* cq) {
       return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::proto::renderprotocol::api::v1::RPInitiateResponse>>(PrepareAsyncRPInitiateRaw(context, request, cq));
     }
+    ::grpc::Status RPRefreshSession(::grpc::ClientContext* context, const ::proto::renderprotocol::api::v1::RPRefreshSessionRequest& request, ::proto::renderprotocol::api::v1::RPRefreshSessionResponse* response) override;
+    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::proto::renderprotocol::api::v1::RPRefreshSessionResponse>> AsyncRPRefreshSession(::grpc::ClientContext* context, const ::proto::renderprotocol::api::v1::RPRefreshSessionRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::proto::renderprotocol::api::v1::RPRefreshSessionResponse>>(AsyncRPRefreshSessionRaw(context, request, cq));
+    }
+    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::proto::renderprotocol::api::v1::RPRefreshSessionResponse>> PrepareAsyncRPRefreshSession(::grpc::ClientContext* context, const ::proto::renderprotocol::api::v1::RPRefreshSessionRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::proto::renderprotocol::api::v1::RPRefreshSessionResponse>>(PrepareAsyncRPRefreshSessionRaw(context, request, cq));
+    }
+    ::grpc::Status RPEndSession(::grpc::ClientContext* context, const ::proto::renderprotocol::api::v1::RPEndSessionRequest& request, ::proto::renderprotocol::api::v1::RPEndSessionResponse* response) override;
+    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::proto::renderprotocol::api::v1::RPEndSessionResponse>> AsyncRPEndSession(::grpc::ClientContext* context, const ::proto::renderprotocol::api::v1::RPEndSessionRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::proto::renderprotocol::api::v1::RPEndSessionResponse>>(AsyncRPEndSessionRaw(context, request, cq));
+    }
+    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::proto::renderprotocol::api::v1::RPEndSessionResponse>> PrepareAsyncRPEndSession(::grpc::ClientContext* context, const ::proto::renderprotocol::api::v1::RPEndSessionRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::proto::renderprotocol::api::v1::RPEndSessionResponse>>(PrepareAsyncRPEndSessionRaw(context, request, cq));
+    }
     class async final :
       public StubInterface::async_interface {
      public:
       void RPInitiate(::grpc::ClientContext* context, const ::proto::renderprotocol::api::v1::RPInitiateRequest* request, ::proto::renderprotocol::api::v1::RPInitiateResponse* response, std::function<void(::grpc::Status)>) override;
       void RPInitiate(::grpc::ClientContext* context, const ::proto::renderprotocol::api::v1::RPInitiateRequest* request, ::proto::renderprotocol::api::v1::RPInitiateResponse* response, ::grpc::ClientUnaryReactor* reactor) override;
+      void RPRefreshSession(::grpc::ClientContext* context, const ::proto::renderprotocol::api::v1::RPRefreshSessionRequest* request, ::proto::renderprotocol::api::v1::RPRefreshSessionResponse* response, std::function<void(::grpc::Status)>) override;
+      void RPRefreshSession(::grpc::ClientContext* context, const ::proto::renderprotocol::api::v1::RPRefreshSessionRequest* request, ::proto::renderprotocol::api::v1::RPRefreshSessionResponse* response, ::grpc::ClientUnaryReactor* reactor) override;
+      void RPEndSession(::grpc::ClientContext* context, const ::proto::renderprotocol::api::v1::RPEndSessionRequest* request, ::proto::renderprotocol::api::v1::RPEndSessionResponse* response, std::function<void(::grpc::Status)>) override;
+      void RPEndSession(::grpc::ClientContext* context, const ::proto::renderprotocol::api::v1::RPEndSessionRequest* request, ::proto::renderprotocol::api::v1::RPEndSessionResponse* response, ::grpc::ClientUnaryReactor* reactor) override;
      private:
       friend class Stub;
       explicit async(Stub* stub): stub_(stub) { }
@@ -87,7 +131,13 @@ class RPHandshakeService final {
     class async async_stub_{this};
     ::grpc::ClientAsyncResponseReader< ::proto::renderprotocol::api::v1::RPInitiateResponse>* AsyncRPInitiateRaw(::grpc::ClientContext* context, const ::proto::renderprotocol::api::v1::RPInitiateRequest& request, ::grpc::CompletionQueue* cq) override;
     ::grpc::ClientAsyncResponseReader< ::proto::renderprotocol::api::v1::RPInitiateResponse>* PrepareAsyncRPInitiateRaw(::grpc::ClientContext* context, const ::proto::renderprotocol::api::v1::RPInitiateRequest& request, ::grpc::CompletionQueue* cq) override;
+    ::grpc::ClientAsyncResponseReader< ::proto::renderprotocol::api::v1::RPRefreshSessionResponse>* AsyncRPRefreshSessionRaw(::grpc::ClientContext* context, const ::proto::renderprotocol::api::v1::RPRefreshSessionRequest& request, ::grpc::CompletionQueue* cq) override;
+    ::grpc::ClientAsyncResponseReader< ::proto::renderprotocol::api::v1::RPRefreshSessionResponse>* PrepareAsyncRPRefreshSessionRaw(::grpc::ClientContext* context, const ::proto::renderprotocol::api::v1::RPRefreshSessionRequest& request, ::grpc::CompletionQueue* cq) override;
+    ::grpc::ClientAsyncResponseReader< ::proto::renderprotocol::api::v1::RPEndSessionResponse>* AsyncRPEndSessionRaw(::grpc::ClientContext* context, const ::proto::renderprotocol::api::v1::RPEndSessionRequest& request, ::grpc::CompletionQueue* cq) override;
+    ::grpc::ClientAsyncResponseReader< ::proto::renderprotocol::api::v1::RPEndSessionResponse>* PrepareAsyncRPEndSessionRaw(::grpc::ClientContext* context, const ::proto::renderprotocol::api::v1::RPEndSessionRequest& request, ::grpc::CompletionQueue* cq) override;
     const ::grpc::internal::RpcMethod rpcmethod_RPInitiate_;
+    const ::grpc::internal::RpcMethod rpcmethod_RPRefreshSession_;
+    const ::grpc::internal::RpcMethod rpcmethod_RPEndSession_;
   };
   static std::unique_ptr<Stub> NewStub(const std::shared_ptr< ::grpc::ChannelInterface>& channel, const ::grpc::StubOptions& options = ::grpc::StubOptions());
 
@@ -96,6 +146,8 @@ class RPHandshakeService final {
     Service();
     virtual ~Service();
     virtual ::grpc::Status RPInitiate(::grpc::ServerContext* context, const ::proto::renderprotocol::api::v1::RPInitiateRequest* request, ::proto::renderprotocol::api::v1::RPInitiateResponse* response);
+    virtual ::grpc::Status RPRefreshSession(::grpc::ServerContext* context, const ::proto::renderprotocol::api::v1::RPRefreshSessionRequest* request, ::proto::renderprotocol::api::v1::RPRefreshSessionResponse* response);
+    virtual ::grpc::Status RPEndSession(::grpc::ServerContext* context, const ::proto::renderprotocol::api::v1::RPEndSessionRequest* request, ::proto::renderprotocol::api::v1::RPEndSessionResponse* response);
   };
   template <class BaseClass>
   class WithAsyncMethod_RPInitiate : public BaseClass {
@@ -117,7 +169,47 @@ class RPHandshakeService final {
       ::grpc::Service::RequestAsyncUnary(0, context, request, response, new_call_cq, notification_cq, tag);
     }
   };
-  typedef WithAsyncMethod_RPInitiate<Service > AsyncService;
+  template <class BaseClass>
+  class WithAsyncMethod_RPRefreshSession : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithAsyncMethod_RPRefreshSession() {
+      ::grpc::Service::MarkMethodAsync(1);
+    }
+    ~WithAsyncMethod_RPRefreshSession() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status RPRefreshSession(::grpc::ServerContext* /*context*/, const ::proto::renderprotocol::api::v1::RPRefreshSessionRequest* /*request*/, ::proto::renderprotocol::api::v1::RPRefreshSessionResponse* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    void RequestRPRefreshSession(::grpc::ServerContext* context, ::proto::renderprotocol::api::v1::RPRefreshSessionRequest* request, ::grpc::ServerAsyncResponseWriter< ::proto::renderprotocol::api::v1::RPRefreshSessionResponse>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
+      ::grpc::Service::RequestAsyncUnary(1, context, request, response, new_call_cq, notification_cq, tag);
+    }
+  };
+  template <class BaseClass>
+  class WithAsyncMethod_RPEndSession : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithAsyncMethod_RPEndSession() {
+      ::grpc::Service::MarkMethodAsync(2);
+    }
+    ~WithAsyncMethod_RPEndSession() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status RPEndSession(::grpc::ServerContext* /*context*/, const ::proto::renderprotocol::api::v1::RPEndSessionRequest* /*request*/, ::proto::renderprotocol::api::v1::RPEndSessionResponse* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    void RequestRPEndSession(::grpc::ServerContext* context, ::proto::renderprotocol::api::v1::RPEndSessionRequest* request, ::grpc::ServerAsyncResponseWriter< ::proto::renderprotocol::api::v1::RPEndSessionResponse>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
+      ::grpc::Service::RequestAsyncUnary(2, context, request, response, new_call_cq, notification_cq, tag);
+    }
+  };
+  typedef WithAsyncMethod_RPInitiate<WithAsyncMethod_RPRefreshSession<WithAsyncMethod_RPEndSession<Service > > > AsyncService;
   template <class BaseClass>
   class WithCallbackMethod_RPInitiate : public BaseClass {
    private:
@@ -145,7 +237,61 @@ class RPHandshakeService final {
     virtual ::grpc::ServerUnaryReactor* RPInitiate(
       ::grpc::CallbackServerContext* /*context*/, const ::proto::renderprotocol::api::v1::RPInitiateRequest* /*request*/, ::proto::renderprotocol::api::v1::RPInitiateResponse* /*response*/)  { return nullptr; }
   };
-  typedef WithCallbackMethod_RPInitiate<Service > CallbackService;
+  template <class BaseClass>
+  class WithCallbackMethod_RPRefreshSession : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithCallbackMethod_RPRefreshSession() {
+      ::grpc::Service::MarkMethodCallback(1,
+          new ::grpc::internal::CallbackUnaryHandler< ::proto::renderprotocol::api::v1::RPRefreshSessionRequest, ::proto::renderprotocol::api::v1::RPRefreshSessionResponse>(
+            [this](
+                   ::grpc::CallbackServerContext* context, const ::proto::renderprotocol::api::v1::RPRefreshSessionRequest* request, ::proto::renderprotocol::api::v1::RPRefreshSessionResponse* response) { return this->RPRefreshSession(context, request, response); }));}
+    void SetMessageAllocatorFor_RPRefreshSession(
+        ::grpc::MessageAllocator< ::proto::renderprotocol::api::v1::RPRefreshSessionRequest, ::proto::renderprotocol::api::v1::RPRefreshSessionResponse>* allocator) {
+      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::GetHandler(1);
+      static_cast<::grpc::internal::CallbackUnaryHandler< ::proto::renderprotocol::api::v1::RPRefreshSessionRequest, ::proto::renderprotocol::api::v1::RPRefreshSessionResponse>*>(handler)
+              ->SetMessageAllocator(allocator);
+    }
+    ~WithCallbackMethod_RPRefreshSession() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status RPRefreshSession(::grpc::ServerContext* /*context*/, const ::proto::renderprotocol::api::v1::RPRefreshSessionRequest* /*request*/, ::proto::renderprotocol::api::v1::RPRefreshSessionResponse* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    virtual ::grpc::ServerUnaryReactor* RPRefreshSession(
+      ::grpc::CallbackServerContext* /*context*/, const ::proto::renderprotocol::api::v1::RPRefreshSessionRequest* /*request*/, ::proto::renderprotocol::api::v1::RPRefreshSessionResponse* /*response*/)  { return nullptr; }
+  };
+  template <class BaseClass>
+  class WithCallbackMethod_RPEndSession : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithCallbackMethod_RPEndSession() {
+      ::grpc::Service::MarkMethodCallback(2,
+          new ::grpc::internal::CallbackUnaryHandler< ::proto::renderprotocol::api::v1::RPEndSessionRequest, ::proto::renderprotocol::api::v1::RPEndSessionResponse>(
+            [this](
+                   ::grpc::CallbackServerContext* context, const ::proto::renderprotocol::api::v1::RPEndSessionRequest* request, ::proto::renderprotocol::api::v1::RPEndSessionResponse* response) { return this->RPEndSession(context, request, response); }));}
+    void SetMessageAllocatorFor_RPEndSession(
+        ::grpc::MessageAllocator< ::proto::renderprotocol::api::v1::RPEndSessionRequest, ::proto::renderprotocol::api::v1::RPEndSessionResponse>* allocator) {
+      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::GetHandler(2);
+      static_cast<::grpc::internal::CallbackUnaryHandler< ::proto::renderprotocol::api::v1::RPEndSessionRequest, ::proto::renderprotocol::api::v1::RPEndSessionResponse>*>(handler)
+              ->SetMessageAllocator(allocator);
+    }
+    ~WithCallbackMethod_RPEndSession() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status RPEndSession(::grpc::ServerContext* /*context*/, const ::proto::renderprotocol::api::v1::RPEndSessionRequest* /*request*/, ::proto::renderprotocol::api::v1::RPEndSessionResponse* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    virtual ::grpc::ServerUnaryReactor* RPEndSession(
+      ::grpc::CallbackServerContext* /*context*/, const ::proto::renderprotocol::api::v1::RPEndSessionRequest* /*request*/, ::proto::renderprotocol::api::v1::RPEndSessionResponse* /*response*/)  { return nullptr; }
+  };
+  typedef WithCallbackMethod_RPInitiate<WithCallbackMethod_RPRefreshSession<WithCallbackMethod_RPEndSession<Service > > > CallbackService;
   typedef CallbackService ExperimentalCallbackService;
   template <class BaseClass>
   class WithGenericMethod_RPInitiate : public BaseClass {
@@ -160,6 +306,40 @@ class RPHandshakeService final {
     }
     // disable synchronous version of this method
     ::grpc::Status RPInitiate(::grpc::ServerContext* /*context*/, const ::proto::renderprotocol::api::v1::RPInitiateRequest* /*request*/, ::proto::renderprotocol::api::v1::RPInitiateResponse* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+  };
+  template <class BaseClass>
+  class WithGenericMethod_RPRefreshSession : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithGenericMethod_RPRefreshSession() {
+      ::grpc::Service::MarkMethodGeneric(1);
+    }
+    ~WithGenericMethod_RPRefreshSession() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status RPRefreshSession(::grpc::ServerContext* /*context*/, const ::proto::renderprotocol::api::v1::RPRefreshSessionRequest* /*request*/, ::proto::renderprotocol::api::v1::RPRefreshSessionResponse* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+  };
+  template <class BaseClass>
+  class WithGenericMethod_RPEndSession : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithGenericMethod_RPEndSession() {
+      ::grpc::Service::MarkMethodGeneric(2);
+    }
+    ~WithGenericMethod_RPEndSession() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status RPEndSession(::grpc::ServerContext* /*context*/, const ::proto::renderprotocol::api::v1::RPEndSessionRequest* /*request*/, ::proto::renderprotocol::api::v1::RPEndSessionResponse* /*response*/) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
@@ -185,6 +365,46 @@ class RPHandshakeService final {
     }
   };
   template <class BaseClass>
+  class WithRawMethod_RPRefreshSession : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithRawMethod_RPRefreshSession() {
+      ::grpc::Service::MarkMethodRaw(1);
+    }
+    ~WithRawMethod_RPRefreshSession() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status RPRefreshSession(::grpc::ServerContext* /*context*/, const ::proto::renderprotocol::api::v1::RPRefreshSessionRequest* /*request*/, ::proto::renderprotocol::api::v1::RPRefreshSessionResponse* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    void RequestRPRefreshSession(::grpc::ServerContext* context, ::grpc::ByteBuffer* request, ::grpc::ServerAsyncResponseWriter< ::grpc::ByteBuffer>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
+      ::grpc::Service::RequestAsyncUnary(1, context, request, response, new_call_cq, notification_cq, tag);
+    }
+  };
+  template <class BaseClass>
+  class WithRawMethod_RPEndSession : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithRawMethod_RPEndSession() {
+      ::grpc::Service::MarkMethodRaw(2);
+    }
+    ~WithRawMethod_RPEndSession() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status RPEndSession(::grpc::ServerContext* /*context*/, const ::proto::renderprotocol::api::v1::RPEndSessionRequest* /*request*/, ::proto::renderprotocol::api::v1::RPEndSessionResponse* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    void RequestRPEndSession(::grpc::ServerContext* context, ::grpc::ByteBuffer* request, ::grpc::ServerAsyncResponseWriter< ::grpc::ByteBuffer>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
+      ::grpc::Service::RequestAsyncUnary(2, context, request, response, new_call_cq, notification_cq, tag);
+    }
+  };
+  template <class BaseClass>
   class WithRawCallbackMethod_RPInitiate : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
@@ -204,6 +424,50 @@ class RPHandshakeService final {
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
     virtual ::grpc::ServerUnaryReactor* RPInitiate(
+      ::grpc::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)  { return nullptr; }
+  };
+  template <class BaseClass>
+  class WithRawCallbackMethod_RPRefreshSession : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithRawCallbackMethod_RPRefreshSession() {
+      ::grpc::Service::MarkMethodRawCallback(1,
+          new ::grpc::internal::CallbackUnaryHandler< ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
+            [this](
+                   ::grpc::CallbackServerContext* context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->RPRefreshSession(context, request, response); }));
+    }
+    ~WithRawCallbackMethod_RPRefreshSession() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status RPRefreshSession(::grpc::ServerContext* /*context*/, const ::proto::renderprotocol::api::v1::RPRefreshSessionRequest* /*request*/, ::proto::renderprotocol::api::v1::RPRefreshSessionResponse* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    virtual ::grpc::ServerUnaryReactor* RPRefreshSession(
+      ::grpc::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)  { return nullptr; }
+  };
+  template <class BaseClass>
+  class WithRawCallbackMethod_RPEndSession : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithRawCallbackMethod_RPEndSession() {
+      ::grpc::Service::MarkMethodRawCallback(2,
+          new ::grpc::internal::CallbackUnaryHandler< ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
+            [this](
+                   ::grpc::CallbackServerContext* context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->RPEndSession(context, request, response); }));
+    }
+    ~WithRawCallbackMethod_RPEndSession() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status RPEndSession(::grpc::ServerContext* /*context*/, const ::proto::renderprotocol::api::v1::RPEndSessionRequest* /*request*/, ::proto::renderprotocol::api::v1::RPEndSessionResponse* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    virtual ::grpc::ServerUnaryReactor* RPEndSession(
       ::grpc::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)  { return nullptr; }
   };
   template <class BaseClass>
@@ -233,9 +497,63 @@ class RPHandshakeService final {
     // replace default version of method with streamed unary
     virtual ::grpc::Status StreamedRPInitiate(::grpc::ServerContext* context, ::grpc::ServerUnaryStreamer< ::proto::renderprotocol::api::v1::RPInitiateRequest,::proto::renderprotocol::api::v1::RPInitiateResponse>* server_unary_streamer) = 0;
   };
-  typedef WithStreamedUnaryMethod_RPInitiate<Service > StreamedUnaryService;
+  template <class BaseClass>
+  class WithStreamedUnaryMethod_RPRefreshSession : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithStreamedUnaryMethod_RPRefreshSession() {
+      ::grpc::Service::MarkMethodStreamed(1,
+        new ::grpc::internal::StreamedUnaryHandler<
+          ::proto::renderprotocol::api::v1::RPRefreshSessionRequest, ::proto::renderprotocol::api::v1::RPRefreshSessionResponse>(
+            [this](::grpc::ServerContext* context,
+                   ::grpc::ServerUnaryStreamer<
+                     ::proto::renderprotocol::api::v1::RPRefreshSessionRequest, ::proto::renderprotocol::api::v1::RPRefreshSessionResponse>* streamer) {
+                       return this->StreamedRPRefreshSession(context,
+                         streamer);
+                  }));
+    }
+    ~WithStreamedUnaryMethod_RPRefreshSession() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable regular version of this method
+    ::grpc::Status RPRefreshSession(::grpc::ServerContext* /*context*/, const ::proto::renderprotocol::api::v1::RPRefreshSessionRequest* /*request*/, ::proto::renderprotocol::api::v1::RPRefreshSessionResponse* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    // replace default version of method with streamed unary
+    virtual ::grpc::Status StreamedRPRefreshSession(::grpc::ServerContext* context, ::grpc::ServerUnaryStreamer< ::proto::renderprotocol::api::v1::RPRefreshSessionRequest,::proto::renderprotocol::api::v1::RPRefreshSessionResponse>* server_unary_streamer) = 0;
+  };
+  template <class BaseClass>
+  class WithStreamedUnaryMethod_RPEndSession : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithStreamedUnaryMethod_RPEndSession() {
+      ::grpc::Service::MarkMethodStreamed(2,
+        new ::grpc::internal::StreamedUnaryHandler<
+          ::proto::renderprotocol::api::v1::RPEndSessionRequest, ::proto::renderprotocol::api::v1::RPEndSessionResponse>(
+            [this](::grpc::ServerContext* context,
+                   ::grpc::ServerUnaryStreamer<
+                     ::proto::renderprotocol::api::v1::RPEndSessionRequest, ::proto::renderprotocol::api::v1::RPEndSessionResponse>* streamer) {
+                       return this->StreamedRPEndSession(context,
+                         streamer);
+                  }));
+    }
+    ~WithStreamedUnaryMethod_RPEndSession() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable regular version of this method
+    ::grpc::Status RPEndSession(::grpc::ServerContext* /*context*/, const ::proto::renderprotocol::api::v1::RPEndSessionRequest* /*request*/, ::proto::renderprotocol::api::v1::RPEndSessionResponse* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    // replace default version of method with streamed unary
+    virtual ::grpc::Status StreamedRPEndSession(::grpc::ServerContext* context, ::grpc::ServerUnaryStreamer< ::proto::renderprotocol::api::v1::RPEndSessionRequest,::proto::renderprotocol::api::v1::RPEndSessionResponse>* server_unary_streamer) = 0;
+  };
+  typedef WithStreamedUnaryMethod_RPInitiate<WithStreamedUnaryMethod_RPRefreshSession<WithStreamedUnaryMethod_RPEndSession<Service > > > StreamedUnaryService;
   typedef Service SplitStreamedService;
-  typedef WithStreamedUnaryMethod_RPInitiate<Service > StreamedService;
+  typedef WithStreamedUnaryMethod_RPInitiate<WithStreamedUnaryMethod_RPRefreshSession<WithStreamedUnaryMethod_RPEndSession<Service > > > StreamedService;
 };
 
 }  // namespace v1
